@@ -1,0 +1,27 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+    timeout-minutes: 15
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore src/SciChartBlazor.sln
+    - name: Build
+      run: dotnet build src/SciChartBlazor.sln --no-restore
+    - name: Test
+      run: dotnet test src/SciChartBlazor.sln --no-build --verbosity normal

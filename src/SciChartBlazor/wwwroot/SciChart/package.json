@@ -1,0 +1,21 @@
+{
+  "name": "sciChartBlazor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "wrapper.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack-dev-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "scichart": "^2.2.2396"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^9.1.0",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.3"
+  }
+}

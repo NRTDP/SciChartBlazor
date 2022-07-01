@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Authors>Northwestern University</Authors>
+		<Description>A Blazor wrapper for SciChart JS</Description>
+		<Copyright>Copyright 2020 (c) Northwestern University. All rights reserved.</Copyright>
+		<LangVersion>latest</LangVersion>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.1" />
+	</ItemGroup>
+
+	<Target Name="PublishRunWebpack" AfterTargets="Build">
+		<Exec WorkingDirectory="wwwroot\SciChart\" Command="npm install" />
+		<Exec WorkingDirectory="wwwroot\SciChart\" Command="npm run build" />
+	</Target>
+
+</Project>
