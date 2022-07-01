@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using System.Runtime.InteropServices;
 using SciChartBlazor.Annotations;
 using SciChartBlazor.Axes;
 using SciChartBlazor.DataSeries;
@@ -8,12 +7,14 @@ using SciChartBlazor.Modifiers;
 using SciChartBlazor.RenderableSeries;
 using SciChartBlazor.Services;
 using SciChartBlazor.Themes;
+using System.Runtime.InteropServices;
 
 namespace SciChartBlazor;
+
 public class SciChartBuilder : IDisposable
 {
     ElementReference _chart;
-    string _elementId = "";
+    string _elementId = string.Empty;
     IJSRuntime _jsRuntime;
     ISciChartBlazorService _sciChartBlazorService;
 
@@ -49,11 +50,9 @@ public class SciChartBuilder : IDisposable
 
     public async Task ZoomTo(double start, double end) =>
         await _jsRuntime.InvokeVoidAsync("sciChartBlazorJson.zoomTo", _chart, start, end);
-    
+
     public async Task AddAxis(AxisBase Axis, AxisType axisType)
     {
-        //Console.WriteLine(Axis.GetJson());
-
         if (axisType == AxisType.X)
             await _jsRuntime.InvokeVoidAsync("sciChartBlazorJson.addXAxis", _chart, Axis.GetJson());
         else if (axisType == AxisType.Y)
@@ -63,16 +62,16 @@ public class SciChartBuilder : IDisposable
     public async Task AddModifiers(IEnumerable<ModifierBase> modifiers)
     {
         foreach (var modifier in modifiers)
-            await _jsRuntime.InvokeVoidAsync("sciChartBlazorJson.addModifiers", _chart, modifier.GetJson());    
+            await _jsRuntime.InvokeVoidAsync("sciChartBlazorJson.addModifiers", _chart, modifier.GetJson());
     }
 
-    public async Task ClearModifiers() => 
+    public async Task ClearModifiers() =>
         await _jsRuntime.InvokeVoidAsync("sciChartBlazorJson.clearModifiers", _chart);
-     
 
-    public async Task AddModifiers(ModifierBase modifier) => 
+
+    public async Task AddModifiers(ModifierBase modifier) =>
         await _jsRuntime.InvokeVoidAsync("sciChartBlazorJson.addModifiers", _chart, modifier.GetJson());
-    
+
     public async Task AddSeries(IList<RenderableSeriesBase> series)
     {
         foreach (var single in series)
@@ -99,22 +98,16 @@ public class SciChartBuilder : IDisposable
 
     public async Task AddSeriesUnmarshalled(RenderableSeriesBase series)
     {
-        await Task.Run(() => 
-        { 
-         string json = series.GetJson();
+        await Task.Run(() =>
+        {
+            string json = series.GetJson();
 
-        var unmarshalledRuntime = (IJSUnmarshalledRuntime)_jsRuntime;
+            var unmarshalledRuntime = (IJSUnmarshalledRuntime)_jsRuntime;
+            var jsUnmarshalledReference = unmarshalledRuntime.InvokeUnmarshalled<IJSUnmarshalledObjectReference>("returnObjectReference");
 
-            var jsUnmarshalledReference = unmarshalledRuntime
-            .InvokeUnmarshalled<IJSUnmarshalledObjectReference>(
-                "returnObjectReference");
-
-            string id =
-            jsUnmarshalledReference.InvokeUnmarshalled<string, string, string>("addSeriesUnmarshalled", _elementId, json);
-
-        series.Id = id;
-        this._renderableSeries.Add(series);
-        }); 
+            series.Id = jsUnmarshalledReference.InvokeUnmarshalled<string, string, string>("addSeriesUnmarshalled", _elementId, json); ;
+            this._renderableSeries.Add(series);
+        });
     }
 
     public async Task AddAnnotations(IList<AnnotationBase> annotations)
@@ -163,32 +156,24 @@ public class SciChartBuilder : IDisposable
         this._renderableSeries.Remove(renderableSeries);
     }
 
-    public async Task UpdateRenderableSeries(RenderableSeriesBase renderableSeries, DataSeriesBase data) 
+    public async Task UpdateRenderableSeries(RenderableSeriesBase renderableSeries, DataSeriesBase data)
     {
-
-        Console.WriteLine(_elementId);
-
-      await _jsRuntime.InvokeVoidAsync("sciChartBlazorJson.updateSeries", _chart, renderableSeries.Id, data.GetJson());
+        await _jsRuntime.InvokeVoidAsync("sciChartBlazorJson.updateSeries", _chart, renderableSeries.Id, data.GetJson());
     }
-      
-
 
     public async Task UpdateRenderableSeriesUnmarshalled(RenderableSeriesBase renderableSeries, double[] X, double[] Y)
     {
-        await Task.Run(() => 
-        { 
-         var unmarshalledRuntime = (IJSUnmarshalledRuntime)_jsRuntime;
+        await Task.Run(() =>
+        {
+            var unmarshalledRuntime = (IJSUnmarshalledRuntime)_jsRuntime;
 
-        var callResultForBoolean =
-            unmarshalledRuntime.InvokeUnmarshalled<UpdateSeriesMetaData,double[],double[], bool>(
-                "sciChartBlazorJson.updateSeriesUnmarshalled", new UpdateSeriesMetaData() { Element= _elementId, SeriesId = renderableSeries.Id }, X, Y );
+            var callResultForBoolean =
+                unmarshalledRuntime.InvokeUnmarshalled<UpdateSeriesMetaData, double[], double[], bool>(
+                    "sciChartBlazorJson.updateSeriesUnmarshalled", new UpdateSeriesMetaData() { Element = _elementId, SeriesId = renderableSeries.Id }, X, Y);
         });
-
-       
     }
 
-
-    public async Task ClearAnnotations() => 
+    public async Task ClearAnnotations() =>
         await _jsRuntime.InvokeVoidAsync("sciChartBlazorJson.clearAnnotations", _chart);
 
     public async Task Clear()
@@ -199,12 +184,11 @@ public class SciChartBuilder : IDisposable
 
     public async Task DisposeAsync() =>
         await _jsRuntime.InvokeVoidAsync("sciChartBlazorJson.unregister", _chart);
-    
+
     public async Task ZoomExtents() =>
         await _jsRuntime.InvokeVoidAsync("sciChartBlazorJson.zoomExtents", _chart);
 
-    public void Dispose() =>
-        _jsRuntime.InvokeVoidAsync("sciChartBlazorJson.unregister", _chart);
+    public void Dispose() => _jsRuntime.InvokeVoidAsync("sciChartBlazorJson.unregister", _chart);
 }
 
 [StructLayout(LayoutKind.Explicit)]

@@ -8,8 +8,6 @@ public class GradientStop
         Offset = offset;
     }
 
-
     public string Color { get; }
-    public double Offset { get; }    
-
+    public double Offset { get; }
 }

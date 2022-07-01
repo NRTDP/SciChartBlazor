@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SciChartBlazor.Annotations;
+﻿namespace SciChartBlazor.Annotations;
 
 public class HorizontalLineAnnotation : AnnotationBase
 {
@@ -16,4 +10,3 @@ public class HorizontalLineAnnotation : AnnotationBase
     public double? StrokeThickness { get; set; }
     public string? AxisLabelFill { get; set; }
 }
-

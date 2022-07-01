@@ -1,10 +1,9 @@
-﻿using System.Text.Json;
-using SciChartBlazor.DataSeries;
+﻿using SciChartBlazor.DataSeries;
 
 namespace SciChartBlazor.RenderableSeries;
+
 public class FastOhlcRenderableSeries<TOpen, THigh, TLow, TClose> : RenderableSeriesBase
 {
-
     [SciChartElementType]
     public override string Type => "OhlcSeries";
 
@@ -17,4 +16,3 @@ public class FastOhlcRenderableSeries<TOpen, THigh, TLow, TClose> : RenderableSe
         DataSeries = dataSeries;
     }
 }
-

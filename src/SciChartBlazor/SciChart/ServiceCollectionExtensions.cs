@@ -6,7 +6,6 @@ namespace SciChartBlazor;
 
 public static class ServiceCollectionExtensions
 {
-
     /// <summary>
     /// Adds IKeyInterceptor as a Transient instance.
     /// </summary>
@@ -18,5 +17,4 @@ public static class ServiceCollectionExtensions
         services.TryAddScoped<ISciChartBlazorService, SciChartBlazorService>();
         return services;
     }
-
 }

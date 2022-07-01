@@ -1,4 +1,5 @@
 ﻿namespace SciChartBlazor;
+
 public struct Point
 {
 	public Point(double x, double y)
@@ -6,6 +7,7 @@ public struct Point
 		X = x;
 		Y = y;
 	}
+
 	public double X { get; }
 	public double Y { get; }
 }

@@ -1,6 +1,4 @@
-﻿using System.Text.Json;
-
-namespace SciChartBlazor.Modifiers;
+﻿namespace SciChartBlazor.Modifiers;
 
 public class ZoomExtentsModifier : ModifierBase
 {
@@ -8,5 +6,4 @@ public class ZoomExtentsModifier : ModifierBase
     public bool? IsAnimated { get; set; }
     public double? AnimationDuration { get; set; }
     public EasingFunction? EasingFunction { get; set; }
-
 }

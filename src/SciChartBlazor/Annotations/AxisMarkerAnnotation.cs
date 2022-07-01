@@ -10,4 +10,3 @@ public class AxisMarkerAnnotation : AnnotationBase
     public string? Color { get; set; }
     public string? FontFamily { get; set; }
 }
-

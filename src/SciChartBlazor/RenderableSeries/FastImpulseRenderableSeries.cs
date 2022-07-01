@@ -18,6 +18,4 @@ public class FastImpulseRenderableSeries<TX, TY> : RenderableSeriesBase
 
     public string? Fill { get; set; }
     public double? Size { get; set; }
-
-
 }

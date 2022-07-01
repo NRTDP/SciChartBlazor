@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using SciChartBlazor.DataSeries;
+﻿using SciChartBlazor.DataSeries;
 
 namespace SciChartBlazor.RenderableSeries;
 
@@ -10,6 +9,7 @@ public class XyScatterRenderableSeries<TX, TY> : RenderableSeriesBase
 
     [SciChartDataSeries(DataSeriesType.XyData)]
     public override DataSeriesBase DataSeries { get; }
+
     public XyScatterRenderableSeries(XyDataSeries<TX, TY> dataSeries)
     {
         DataSeries = dataSeries;
