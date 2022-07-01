@@ -1,7 +1,5 @@
-﻿using System.Text.Json;
-using System.Text.Json.Serialization;
+﻿namespace SciChartBlazor.Themes;
 
-namespace SciChartBlazor.Themes;
 [Serializable]
 public abstract class SciChartThemeBase
 {
@@ -32,10 +30,8 @@ public abstract class SciChartThemeBase
     public virtual string LabelForegroundBrush { get; set; } = "#555555FF";
     public virtual string LegendBackgroundBrush { get; set; } = "#33333333";
     public virtual string LineSeriesColor { get; set; } = "#777777FF";
-
     public virtual string LoadingAnimationBackground { get; set; } = "#F9F9F9FF";
     public virtual string LoadingAnimationForeground { get; set; } = "#777777FF";
-
     public virtual string MajorGridLineBrush { get; set; } = "#CFCFCFFF";
     public virtual string MinorGridLineBrush { get; set; } = "#CFCFCFFF";
     public virtual string MountainAreaBrush { get; set; } = "#76B7E2B4";
@@ -60,5 +56,5 @@ public abstract class SciChartThemeBase
     public virtual string UpBandSeriesLineColor { get; set; } = "#52CC54FF";
     public virtual string UpBodyBrush { get; set; } = "#52CC54A0";
     public virtual string UpWickColor { get; set; } = "#52CC54FF";
-    public virtual string AxisTitleColor { get; set; } = "#777777FF";  
+    public virtual string AxisTitleColor { get; set; } = "#777777FF";
 }

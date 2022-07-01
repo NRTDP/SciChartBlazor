@@ -1,10 +1,8 @@
-﻿using System.Text.Json;
-using SciChartBlazor.DataSeries;
+﻿using SciChartBlazor.DataSeries;
 
 namespace SciChartBlazor.RenderableSeries;
 public class FastCandlestickRenderableSeries<TOpen, THigh, TLow, TClose> : RenderableSeriesBase
 {
-
     [SciChartElementType]
     public override string Type => "CandlestickSeries";
 

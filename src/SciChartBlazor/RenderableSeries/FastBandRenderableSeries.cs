@@ -1,10 +1,9 @@
-﻿using System.Text.Json;
-using SciChartBlazor.DataSeries;
+﻿using SciChartBlazor.DataSeries;
 
 namespace SciChartBlazor.RenderableSeries;
+
 public class FastBandRenderableSeries<TX, TY1, TY2> : RenderableSeriesBase
 {
-
     [SciChartElementType]
     public override string Type => "BandSeries";
 

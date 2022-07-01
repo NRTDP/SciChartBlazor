@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using SciChartBlazor.DataSeries;
+﻿using SciChartBlazor.DataSeries;
 
 namespace SciChartBlazor.RenderableSeries;
 

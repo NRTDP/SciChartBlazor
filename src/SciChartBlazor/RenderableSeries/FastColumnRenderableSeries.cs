@@ -1,11 +1,9 @@
-﻿using System.Text.Json;
-using SciChartBlazor.DataSeries;
+﻿using SciChartBlazor.DataSeries;
 
 namespace SciChartBlazor.RenderableSeries;
 
 public class FastColumnRenderableSeries<TX, TY> : RenderableSeriesBase
 {
-
     [SciChartElementType]
     public override string Type => "ColumnSeries";
 

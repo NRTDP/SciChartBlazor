@@ -2,14 +2,11 @@
 
 [Serializable]
 [SciChartDataSeries(DataSeriesType.XyData)]
-public class XyDataSeries<TX,TY> : DataSeriesBase
+public class XyDataSeries<TX, TY> : DataSeriesBase
 {
-
-    public ICollection<TX> XValues { get; }
-    public ICollection<TY> YValues { get; }
     public XyDataSeries()
     {
-        XValues = new List<TX>();  
+        XValues = new List<TX>();
         YValues = new List<TY>();
     }
 
@@ -18,10 +15,13 @@ public class XyDataSeries<TX,TY> : DataSeriesBase
         XValues = xValues;
         YValues = yValues;
     }
+
+    public ICollection<TX> XValues { get; }
+    public ICollection<TY> YValues { get; }
+
     public void Append(TX xValue, TY yValue)
     {
         XValues.Add(xValue);
         YValues.Add(yValue);
-
     }
 }

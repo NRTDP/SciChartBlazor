@@ -1,12 +1,10 @@
-﻿using System.Text.Json;
-using SciChartBlazor.DataSeries;
+﻿using SciChartBlazor.DataSeries;
 using SciChartBlazor.Styles;
 
 namespace SciChartBlazor.RenderableSeries;
 
 public class FastMountainRenderableSeries<TX, TY> : RenderableSeriesBase
 {
-
     [SciChartElementType]
     public override string Type => "MountainSeries";
 

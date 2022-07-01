@@ -1,5 +1,4 @@
-﻿
-import { SciChartSurface } from "scichart/Charting/Visuals/SciChartSurface";
+﻿import { SciChartSurface } from "scichart/Charting/Visuals/SciChartSurface";
 import { SciChartJSLightTheme } from "scichart/Charting/Themes/SciChartJSLightTheme";
 import { chartBuilder } from "scichart/Builder/chartBuilder";
 import { RubberBandXySelectorModifier } from "././SciChartExtensions/RubberBandXySelectorModifier"
@@ -12,7 +11,6 @@ let chartInstances = {};
 function resolveContext(element) {
     return chartInstances.hasOwnProperty(element.id) && chartInstances[element.id];
 }
-
 
 export async function setLincenseKey(key) {
 

@@ -3,8 +3,9 @@ using System.Text.Json.Serialization;
 using static SciChartBlazor.SciChartElementBase;
 
 namespace SciChartBlazor.DataSeries;
+
 [Serializable]
-public abstract class DataSeriesBase 
+public abstract class DataSeriesBase
 {
     public string? DataSeriesName { get; set; } = null;
 
@@ -14,9 +15,7 @@ public abstract class DataSeriesBase
 
     public string GetJson()
     {
-
-        var typeAttribute = this.GetType().GetCustomAttributes(typeof(SciChartDataSeries), true
-   ).FirstOrDefault() as SciChartDataSeries;
+        var typeAttribute = this.GetType().GetCustomAttributes(typeof(SciChartDataSeries), true).FirstOrDefault() as SciChartDataSeries;
         var output = new jsonObject();
 
         switch (typeAttribute?.GetDataType())
@@ -38,28 +37,23 @@ public abstract class DataSeriesBase
                 }
         }
 
+        JsonSerializerOptions _op = new()
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+            Converters = { new JsonStringEnumConverter(), new DataSeriesConverter() }
+        };
 
-
-        JsonSerializerOptions _op = new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull, Converters = { new JsonStringEnumConverter(), new DataSeriesConverter()} };
-        return JsonSerializer.Serialize(output, _op); 
-
+        return JsonSerializer.Serialize(output, _op);
     }
-
 
     [Serializable]
     private class jsonObject
     {
-
         public DataSeriesBase? XyData { get; set; } = null;
 
         public DataSeriesBase? XyyData { get; set; } = null;
 
         public DataSeriesBase? XyzData { get; set; } = null;
-
-
     }
-
 }
-
-
-

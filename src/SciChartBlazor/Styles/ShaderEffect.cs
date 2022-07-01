@@ -1,6 +1,6 @@
 ﻿namespace SciChartBlazor.Styles;
 
-public class ShaderEffect 
+public class ShaderEffect
 {
 	public ShaderEffect(ShaderEffectType effectType)
 	{

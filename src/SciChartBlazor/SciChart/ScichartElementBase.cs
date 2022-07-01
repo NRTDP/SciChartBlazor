@@ -1,9 +1,10 @@
-﻿using System.Reflection;
+﻿using SciChartBlazor.DataSeries;
+using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using SciChartBlazor.DataSeries;
 
 namespace SciChartBlazor;
+
 public abstract class SciChartElementBase
 {
     [SciChartElementType]
@@ -13,7 +14,7 @@ public abstract class SciChartElementBase
     JsonSerializerOptions _op = new()
     {
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-         AllowTrailingCommas = true,
+        AllowTrailingCommas = true,
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
         Converters = { new JsonStringEnumConverter(), new DataSeriesConverter() }
     };
@@ -50,7 +51,7 @@ public abstract class SciChartElementBase
 
     public string GetJson()
     {
-        return JsonSerializer.Serialize(GetJsonObject(), _op);;
+        return JsonSerializer.Serialize(GetJsonObject(), _op);
     }
 
     private jsonObject GetJsonObject()
@@ -108,9 +109,7 @@ public abstract class SciChartElementBase
                             output.Options.Add(ConvertToCamelCase(property.Name), v.GetJsonObject());
                         }
 
-
                         break;
-
                     default:
                         {
                             if (output.Options == null) { output.Options = new(); }
@@ -120,9 +119,9 @@ public abstract class SciChartElementBase
                 }
             }
         }
+
         return output;
     }
-
 
     private string ConvertToCamelCase(string str)
     {
@@ -136,25 +135,18 @@ public abstract class SciChartElementBase
         // Displaying output.  
         foreach (Attribute attr in attrs)
         {
-            if (attr is SciChartElementType)
+            switch (attr)
             {
-                return attr as SciChartElementType;
-            }
-            else if (attr is SciChartCustomElementType)
-            {
-                return attr as SciChartCustomElementType;
-            }
-            else if (attr is PureIntEnum)
-            {
-                return attr as PureIntEnum;
-            }
-            else if (attr is HasOptions)
-            {
-                return attr as HasOptions;
-            }
-            else if (attr is SciChartDataSeries a)
-            {
-                return a.GetDataType();
+                case SciChartElementType:
+                    return attr as SciChartElementType;
+                case SciChartCustomElementType:
+                    return attr as SciChartCustomElementType;
+                case PureIntEnum:
+                    return attr as PureIntEnum;
+                case HasOptions:
+                    return attr as HasOptions;
+                case SciChartDataSeries a:
+                    return a.GetDataType();
             }
         }
 
@@ -180,10 +172,7 @@ public class SciChartElementType : Attribute { }
 public class HasOptions : Attribute { }
 
 [AttributeUsage(AttributeTargets.Property)]
-public class SciChartCustomElementType : Attribute
-{
-
-}
+public class SciChartCustomElementType : Attribute { }
 
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Class)]
 public class SciChartDataSeries : Attribute

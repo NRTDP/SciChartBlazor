@@ -1,6 +1,6 @@
 ﻿namespace SciChartBlazor.Modifiers;
 
-//this is a custom modifier
+/// <summary>Custom modifier to allow selection of a range.</summary>
 public class RubberBandXySelectionModifier : ModifierBase
 {
     [SciChartElementType]
@@ -8,11 +8,9 @@ public class RubberBandXySelectionModifier : ModifierBase
 
     [SciChartCustomElementType]
     public string customType => "RubberBandXYSelection";
- 
+
     public string? Fill { get; set; }
     public string? Stroke { get; set; }
     public double? StrokeThickness { get; set; }
     public bool? RangeSelect { get; set; }
-
-
 }
