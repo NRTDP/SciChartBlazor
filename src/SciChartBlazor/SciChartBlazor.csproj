@@ -8,6 +8,9 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
+	<ItemGroup>
+	  <Compile Include="..\SciChartBlazor.Demos\ChartDemos\LineRenderableSeriesExample.razor.cs" Link="LineRenderableSeriesExample.razor.cs" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<SupportedPlatform Include="browser" />
