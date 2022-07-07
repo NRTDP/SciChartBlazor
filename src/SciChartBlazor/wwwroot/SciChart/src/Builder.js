@@ -180,8 +180,7 @@ export async function addSeries(element, jsonString) {
 }
 
 window.returnObjectReference = () => {
-    return
-    {
+    return {
         addSeriesUnmarshalled: function (element, jsonString) {
 
             const id = BINDING.conv_string(element)
@@ -195,7 +194,7 @@ window.returnObjectReference = () => {
             var ids = seriesArray.map(function (i) {
                 return i.id;
             });
-            return ids[0];
+            return BINDING.js_string_to_mono_string(ids[0]);
         }
     };
 }
@@ -213,4 +212,33 @@ export function addCustomEventListener(dotNetObjectRef, name) {
     document.addEventListener(name, (event) => {
         dotNetObjectRef.invokeMethodAsync('OnCustomEvent', event.detail)
     });
+}
+
+export async function test(element) {
+
+    initSciChart(element, theme = null);
+
+
+    const { sciChartSurface, wasmContext } = resolveContext(element);
+
+
+    sciChartSurface.xAxes.add(new NumericAxis(wasmContext));
+    sciChartSurface.yAxes.add(new NumericAxis(wasmContext, { growBy: new NumberRange(0.05, 0.05) }));
+
+    const xValues = Array.from({ length: 100 }, (x, i) => i);
+    const yValues = xValues.map(x => Math.sin(x * 0.1));
+
+    sciChartSurface.renderableSeries.add(new FastLineRenderableSeries(wasmContext, {
+        dataSeries: new XyDataSeries(wasmContext, { xValues, yValues }),
+        stroke: "#ff6600",
+        strokeThickness: 5,
+        animation: { type: EAnimationType.Wave, options: { zeroLine: -1, pointDurationFraction: 0.5, duration: 1000 } },
+        effect: new ShadowEffect(wasmContext, { brightness: 1, offset: new Point(5, -10), range: 0.7 })
+
+    }));
+
+
+    return sciChartSurface.toJson();
+
+
 }

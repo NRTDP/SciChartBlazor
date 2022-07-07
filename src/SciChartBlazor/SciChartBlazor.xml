@@ -1,0 +1,501 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SciChartBlazor</name>
+    </assembly>
+    <members>
+        <member name="P:SciChartBlazor.Axes.AxisBase.VisibleRange">
+            <summary>
+             * In multi-axis scenarios you will need to set the xAxisId/yAxisId properties of series, annotations, modifiers to match that of the axis
+                you want them to be registered on.
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.Axes.AxisBase.VisibleRangeLimit">
+            <summary>
+            Limits {@link AxisCore.visibleRange}, meaning the chart cannot autorange outside that range
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.Axes.AxisBase.zoomExtentsRange">
+            <summary>
+            If this is set, it will be used as the range when zooming extents, rather than the data max range
+            </summary>
+        </member>
+        <member name="T:SciChartBlazor.AxisAlignment">
+            <summary>
+            The Alignmnet of the Axis
+            </summary>
+        </member>
+        <member name="T:SciChartBlazor.AutoRange">
+            <summary>
+            When to use AutoRange.
+            </summary>
+        </member>
+        <member name="T:SciChartBlazor.PointMarkerShape">
+            <summary>
+            The shape of a point marker.
+            </summary>
+        </member>
+        <member name="T:SciChartBlazor.XyDirection">
+            <summary>
+            The direction a modifier will operate in.
+            </summary>
+        </member>
+        <member name="T:SciChartBlazor.AnnotationLayer">
+            <summary>
+            Where annotations will be rendered.
+            </summary>
+        </member>
+        <member name="T:SciChartBlazor.ExecuteOn">
+            <summary>
+            Which mouse button to activate on.
+            </summary>
+        </member>
+        <member name="F:SciChartBlazor.ExecuteOn.MouseLeftButton">
+            Execute on MouseRightButton
+        </member>
+        <member name="F:SciChartBlazor.ExecuteOn.MouseMiddleButton">
+            Execute on MouseRightButton
+        </member>
+        <member name="F:SciChartBlazor.ExecuteOn.MouseRightButton">
+            Execute on MouseRightButton
+        </member>
+        <member name="T:SciChartBlazor.NumericFormat">
+            <summary>
+            The format of the axis.
+            </summary>
+        </member>
+        <member name="F:SciChartBlazor.NumericFormat.NoFormat">
+            <summary>
+            No format, return the string representation unchanged
+            </summary>
+        </member>
+        <member name="F:SciChartBlazor.NumericFormat.Decimal">
+            <summary>
+            Format to a specified number of decimal places
+            </summary>
+        </member>
+        <member name="F:SciChartBlazor.NumericFormat.SignificantFigures">
+            <summary>
+            Format to a specified number of significant figures
+            </summary>
+        </member>
+        <member name="F:SciChartBlazor.NumericFormat.Date_DDMMYYYY">
+            <summary>
+            Format as a date in format DD/MM/YYYY
+            </summary>
+        </member>
+        <member name="F:SciChartBlazor.NumericFormat.Date_DDMMYY">
+            <summary>
+            Format as a date in format DD/MM/YY
+            </summary>
+        </member>
+        <member name="F:SciChartBlazor.NumericFormat.Date_DDMMHHMM">
+            <summary>
+            Format as a date in format DD/MM HH:MM
+            </summary>
+        </member>
+        <member name="F:SciChartBlazor.NumericFormat.Date_DDMM">
+            <summary>
+            Format as a date in format DD/MM
+            </summary>
+        </member>
+        <member name="F:SciChartBlazor.NumericFormat.Date_HHMM">
+            <summary>
+            Format as a date in format HH:MM
+            </summary>
+        </member>
+        <member name="F:SciChartBlazor.NumericFormat.Exponential">
+            <summary>
+            Format using Exponential notation to a specified number of significant figures eg 1.0E0, 1.5E1, 2.7E2
+            Note that this will ALWAYS be base 10, even when used on a Logarithmic axis
+            </summary>
+        </member>
+        <member name="F:SciChartBlazor.NumericFormat.Scientific">
+            <summary>
+            Format using Scientific notation to a specified number of significant figures eg 1.0x10^1, 1.5x10^2, 2.7x10^3
+            On a Logarithmic axis, the base will be the same as the axis logarithmic base
+            </summary>
+        </member>
+        <member name="T:SciChartBlazor.DataSeriesType">
+            <summary>
+            The type of data in the dataseries.
+            </summary>
+        </member>
+        <member name="T:SciChartBlazor.SciChartBuilder">
+            <summary>
+            Creates and controls a SciChart Surface.
+            </summary>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.#ctor(Microsoft.AspNetCore.Components.ElementReference,Microsoft.JSInterop.IJSRuntime,SciChartBlazor.Services.ISciChartBlazorService)">
+            <summary>
+            Creates a SciChart Surface.
+            </summary>
+            <param name="elementRef">The ElementReference for the containg div.</param>
+            <param name="jsRuntime">The JS Runtime</param>
+            <param name="sciChartBlazorService">The SciChartBlazor Service</param>
+        </member>
+        <member name="P:SciChartBlazor.SciChartBuilder.Annotations">
+            <summary>
+            The current annotations.
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.SciChartBuilder.Modifiers">
+            <summary>
+            The current modifers. Not currently used.
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.SciChartBuilder.RenderableSeries">
+            <summary>
+            The current active renderable series.
+            </summary>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.CreateChart(SciChartBlazor.Themes.SciChartThemeBase,System.Collections.Generic.ICollection{SciChartBlazor.Modifiers.ModifierBase})">
+            <summary>
+            Initialize a chart.
+            </summary>
+            <param name="theme">A SciChart theme. Defaults to SciChartThemeLight.</param>
+            <param name="modifiers">Modifiers to use.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.ZoomTo(System.Double,System.Double)">
+            <summary>
+            Zooms to a region in the X axis.
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.AddAxis(SciChartBlazor.Axes.AxisBase,SciChartBlazor.AxisType)">
+            <summary>
+            Add an Axis.
+            </summary>
+            <param name="Axis"></param>
+            <param name="axisType">X or Y axis</param>
+            <returns></returns>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.AddModifiers(System.Collections.Generic.IEnumerable{SciChartBlazor.Modifiers.ModifierBase})">
+            <summary>
+            Add chart modifiers.
+            </summary>
+            <param name="modifiers"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.ClearModifiers">
+            <summary>
+            Clear all modifiers.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.AddModifier(SciChartBlazor.Modifiers.ModifierBase)">
+            <summary>
+            Add a single chart modifier.
+            </summary>
+            <param name="modifier"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.AddSeries(System.Collections.Generic.IList{SciChartBlazor.RenderableSeries.RenderableSeriesBase})">
+            <summary>
+            Add multiple RenderableSeries.
+            </summary>
+            <param name="series"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.AddSeries(SciChartBlazor.RenderableSeries.RenderableSeriesBase)">
+            <summary>
+            Add a single RenderableSeries.
+            </summary>
+            <param name="series"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.AddSeriesUnmarshalled(SciChartBlazor.RenderableSeries.RenderableSeriesBase)">
+            <summary>
+            Add a single RenderableSeries without marshalling. May be faster with large datasets.
+            </summary>
+            <param name="series"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.AddAnnotations(System.Collections.Generic.IList{SciChartBlazor.Annotations.AnnotationBase})">
+            <summary>
+            Add annotations.
+            </summary>
+            <param name="annotations"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.AddAnnotation(SciChartBlazor.Annotations.AnnotationBase)">
+            <summary>
+            Add an annotation.
+            </summary>
+            <param name="annotations"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.RemoveAnnotation(SciChartBlazor.Annotations.AnnotationBase)">
+            <summary>
+            Remove an annotation.
+            </summary>
+            <param name="annotation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.RemoveRenderableSeries(SciChartBlazor.RenderableSeries.RenderableSeriesBase)">
+            <summary>
+            Remove a RenderableSeries.
+            </summary>
+            <param name="renderableSeries"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.RemoveRenderableSeries(System.String)">
+            <summary>
+            Remove a RenderableSeries.
+            </summary>
+            <param name="renderableSeriesId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.UpdateRenderableSeries(SciChartBlazor.RenderableSeries.RenderableSeriesBase,SciChartBlazor.DataSeries.DataSeriesBase)">
+            <summary>
+            Update a renderable series. This is usually faster than creating a new one.
+            </summary>
+            <param name="renderableSeries"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.UpdateRenderableSeries(System.String,SciChartBlazor.DataSeries.DataSeriesBase)">
+            <summary>
+            Update a renderable series. This is usually faster than creating a new one.
+            </summary>
+            <param name="renderableSeriesId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.UpdateRenderableSeriesUnmarshalled(SciChartBlazor.RenderableSeries.RenderableSeriesBase,System.Double[],System.Double[])">
+            <summary>
+            Update a renderable series without marshalling. Potentially much faster with large datasets. Currently only X,Y dataseries.
+            </summary>
+            <param name="renderableSeries"></param>
+            <param name="X"></param>
+            <param name="Y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.ClearAnnotations">
+            <summary>
+            Cleats all annotations.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.Clear">
+            <summary>
+            Clears the chart.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.DisposeAsync">
+            <summary>
+            Dispose the chart async.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.ZoomExtents">
+            <summary>
+            Zoom to Extents.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.Dispose">
+            <summary>
+            Dispose the chart.
+            </summary>
+        </member>
+        <member name="M:SciChartBlazor.ServiceCollectionExtensions.AddSciChart(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{SciChartBlazor.Services.SciChartOptions})">
+            <summary>
+            Adds IKeyInterceptor as a Transient instance.
+            </summary>
+            <param name="services">IServiceCollection</param>
+            <returns>Continues the IServiceCollection chain.</returns>
+        </member>
+        <member name="T:SciChartBlazor.Services.ISciChartBlazorService">
+            <summary>
+            An interface for the ScichartBlazorService.
+            </summary>
+        </member>
+        <member name="M:SciChartBlazor.Services.ISciChartBlazorService.SetRuntimeLicenseKey">
+            <summary>
+            Sets the SciChart license key.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SciChartBlazor.Services.SciChartBlazorService">
+            <summary>
+            A Blazor service for SciChart. Currently handles license key registration.
+            </summary>
+        </member>
+        <member name="M:SciChartBlazor.Services.SciChartBlazorService.#ctor(Microsoft.JSInterop.IJSRuntime,SciChartBlazor.Services.SciChartOptions)">
+            <summary>
+            A Blazor service for SciChart. Currently handles license key registration.
+            </summary>
+            <param name="jsRuntime">The JS runtime.</param>
+            <param name="options">The options for SciChartBlazor service. Currently just the license key.</param>
+        </member>
+        <member name="M:SciChartBlazor.Services.SciChartBlazorService.#ctor(Microsoft.JSInterop.IJSRuntime,Microsoft.Extensions.Options.IOptions{SciChartBlazor.Services.SciChartOptions})">
+            <summary>
+            A Blazor service for SciChart. Currently handles license key registration.
+            </summary>
+            <param name="jsRuntime">The JS runtime.</param>
+            <param name="options">The options for SciChartBlazor service. Currently just the license key.</param>
+        </member>
+        <member name="M:SciChartBlazor.Services.SciChartBlazorService.Dispose">
+            <summary>
+            Disposes the service.
+            </summary>
+        </member>
+        <member name="M:SciChartBlazor.Services.SciChartBlazorService.SetRuntimeLicenseKey">
+            <summary>
+            Sets the SciChart license key.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SciChartBlazor.Services.SciChartOptions">
+            <summary>
+            Options for the SciChartBlazor service.
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.Services.SciChartOptions.RuntimeLicenseKey">
+            <summary>
+            The SciChart JS license key. 
+            </summary>
+        </member>
+        <member name="T:SciChartBlazor.Styles.AxisBorder">
+            <summary>
+            The axis border.
+            </summary>
+        </member>
+        <member name="T:SciChartBlazor.Styles.AxisStyle">
+            <summary>
+            The axis style.
+            </summary>
+        </member>
+        <member name="T:SciChartBlazor.Styles.AxisTitleStyle">
+            <summary>
+            The style of the axis title.
+            </summary>
+        </member>
+        <member name="T:SciChartBlazor.Styles.GradientParams">
+            <summary>
+            The parameters for a gradient.
+            </summary>
+        </member>
+        <member name="M:SciChartBlazor.Styles.GradientParams.#ctor(System.Collections.Generic.IList{SciChartBlazor.Styles.GradientStop},SciChartBlazor.Point,SciChartBlazor.Point)">
+            <summary>
+            The parameters for a gradient.
+            </summary>
+            <param name="gradientStops"></param>
+            <param name="startPoint"></param>
+            <param name="endPoint"></param>
+        </member>
+        <member name="P:SciChartBlazor.Styles.GradientParams.GradientStops">
+            <summary>
+            A list of gradient transitions.
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.Styles.GradientParams.StartPoint">
+            <summary>
+            The start point.
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.Styles.GradientParams.EndPoint">
+            <summary>
+            The end point.
+            </summary>
+        </member>
+        <member name="T:SciChartBlazor.Styles.GradientStop">
+            <summary>
+            The Stop color of a gradient. Not tested.
+            </summary>
+        </member>
+        <member name="T:SciChartBlazor.Styles.HeatmapColorMap">
+            <summary>
+            The color map for a heatmap. Not tested.
+            </summary>
+        </member>
+        <member name="T:SciChartBlazor.Styles.LabelStyle">
+            <summary>
+            The style of a Label.
+            </summary>
+        </member>
+        <member name="T:SciChartBlazor.Styles.MajorGridLineStyle">
+            <summary>
+            The style of a Major Grid line,
+            </summary>
+        </member>
+        <member name="T:SciChartBlazor.Styles.MajorTickLineStyle">
+            <summary>
+            The style of a Major Tick.
+            </summary>
+        </member>
+        <member name="T:SciChartBlazor.Styles.MinorGridLineStyle">
+            <summary>
+            The style of a Minor grid line.
+            </summary>
+        </member>
+        <member name="T:SciChartBlazor.Styles.MinorTickLineStyle">
+            <summary>
+            The styling of a minor tick.
+            </summary>
+        </member>
+        <member name="M:SciChartBlazor.Styles.ShaderEffect.#ctor(SciChartBlazor.ShaderEffectType)">
+            <summary>
+            Create a shader effect.
+            </summary>
+            <param name="effectType"></param>
+        </member>
+        <member name="T:SciChartBlazor.Themes.SciChartColorMap">
+            <summary>
+            A sciChart color map.
+            </summary>
+        </member>
+        <member name="M:SciChartBlazor.Themes.SciChartColorMap.#ctor(System.Double,System.String)">
+            <summary>
+            Creates a scichart color map.
+            </summary>
+            <param name="offset"></param>
+            <param name="color"></param>
+        </member>
+        <member name="P:SciChartBlazor.Themes.SciChartColorMap.Offset">
+            <summary>
+            The offset.
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.Themes.SciChartColorMap.Color">
+            <summary>
+            The color.
+            </summary>
+        </member>
+        <member name="T:SciChartBlazor.Themes.SciChartThemeBase">
+            <summary>
+            The base of a scichart theme.
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.Themes.SciChartThemeBase.Type">
+            <summary>
+            The name of a theme.
+            </summary>
+        </member>
+        <member name="T:SciChartBlazor.Themes.SciChartThemeLight">
+            <summary>
+            The standard Light theme.
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.Themes.SciChartThemeLight.Type">
+            <summary>
+            The theme name.
+            </summary>
+        </member>
+        <member name="F:SciChartBlazor.Demos.ChartDemos.TestChartExample.__description__">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SciChartBlazor.Demos.ChartDemos.TestChartExample.__niceName__">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>

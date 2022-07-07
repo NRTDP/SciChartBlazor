@@ -15,5 +15,7 @@ public abstract class RenderableSeriesBase : SciChartElementBase
     public string? XAxisId { get; set; }
     public string? YAxisId { get; set; }
     public bool? IsVisible { get; set; }
+
+    [HasOptions]
     public ShaderEffect? ShaderEffect { get; set; }
 }

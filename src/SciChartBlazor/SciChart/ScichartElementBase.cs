@@ -107,8 +107,6 @@ public abstract class SciChartElementBase
                             var thisJson = v.GetJson();
                             output.Options.Add(ConvertToCamelCase(property.Name), v.GetJsonObject());
                         }
-
-
                         break;
 
                     default:

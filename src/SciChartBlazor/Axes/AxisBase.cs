@@ -61,7 +61,7 @@ public abstract class AxisBase : SciChartElementBase
     /// <summary>
     /// If this is set, it will be used as the range when zooming extents, rather than the data max range
     /// </summary>
-    public SciChartNumberRange? zoomExtentsRange { get; set; } = null;
+    private SciChartNumberRange? zoomExtentsRange { get; set; } = null; // this errors out.
 
     public AxisBorder? AxisBorder { get; set; } = null;
 

@@ -72,6 +72,11 @@ public class SciChartBuilder : IDisposable
             await AddModifiers(modifiers);
     }
 
+    public async Task<string> Test()
+    {
+       return await _jsRuntime.InvokeAsync<string>("sciChartBlazorJson.test", _chart);
+    }
+
     /// <summary>
     /// Zooms to a region in the X axis.
     /// </summary>
