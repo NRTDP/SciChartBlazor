@@ -8,22 +8,37 @@ using SciChartBlazor.Services;
 
 namespace SciChartBlazor.Demos.ChartDemos
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class LineRenderableSeriesChartExample : ComponentBase
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        private static string __description__ = "An example using the LineRenderable series";
 
-        public static string __description__ = "An example using the LineRenderable series";
-        public static string __niceName__ = "LineRenderable Series";
+        /// <summary>
+        /// 
+        /// </summary>
+        private static string __niceName__ = "LineRenderable Series";
 
 
-        public string Id { get; set; } = "C" + Guid.NewGuid().ToString();
-        protected ElementReference _chart;
+        private string Id { get; set; } = "C" + Guid.NewGuid().ToString();
+
+        private protected ElementReference _chart;
 
         SciChartBuilder _chartBuilder = default!;
 
 
-        [Inject] public IJSRuntime JSRuntime { get; set; } = default!;
-        [Inject] public ISciChartBlazorService sciChartBlazorService { get; set; } = default!;
+        [Inject]  IJSRuntime JSRuntime { get; set; } = default!;
+        [Inject]  ISciChartBlazorService sciChartBlazorService { get; set; } = default!;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="firstRender"></param>
+        /// <returns></returns>
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
@@ -48,7 +63,7 @@ namespace SciChartBlazor.Demos.ChartDemos
             for (int i =0; i < 1000; i++)
             {
                 x[i] = (double)i;
-                y[i] = Math.Sin(i * 2);
+                y[i] = Math.Sin(i * 0.2);
             }
 
             XyDataSeries<double, double> dataSeries = new(x, y) { DataSeriesName = "Data", ContainsNaN = false, DataIsSortedInX = true };

@@ -1,5 +1,9 @@
 ﻿namespace SciChartBlazor;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+/// <summary>
+/// The Alignmnet of the Axis
+/// </summary>
 public enum AxisAlignment
 {
     Bottom,
@@ -7,7 +11,9 @@ public enum AxisAlignment
     Right,
     Top,
 }
-
+/// <summary>
+/// When to use AutoRange.
+/// </summary>
 public enum AutoRange
 {
     Always,
@@ -27,6 +33,9 @@ public enum ShaderEffectType
     Shadow,
 }
 
+/// <summary>
+/// The shape of a point marker.
+/// </summary>
 public enum PointMarkerShape
 {
     Ellipse,
@@ -35,7 +44,9 @@ public enum PointMarkerShape
     Cross,
     X
 }
-
+/// <summary>
+/// The direction a modifier will operate in.
+/// </summary>
 public enum XyDirection
 {
     XDirection,
@@ -78,6 +89,9 @@ public enum EasingFunction
     Quadratic
 }
 
+/// <summary>
+/// Where annotations will be rendered.
+/// </summary>
 public enum AnnotationLayer
 {
     AboveChart,
@@ -119,13 +133,28 @@ public enum LabelPlacement
     TopRight
 }
 
+/// <summary>
+/// Which mouse button to activate on.
+/// </summary>
 public enum ExecuteOn
 {
+    /**
+      *  Execute on MouseRightButton
+      */
     MouseLeftButton = 0,
+    /**
+     *  Execute on MouseRightButton
+     */
     MouseMiddleButton = 1,
+    /**
+     *  Execute on MouseRightButton
+     */
     MouseRightButton = 2
 }
 
+/// <summary>
+/// The format of the axis.
+/// </summary>
 public enum NumericFormat
 {
     /// <summary>
@@ -180,9 +209,18 @@ public enum NumericFormat
     /// </summary>
     Scientific
 }
+/// <summary>
+/// The type of data in the dataseries.
+/// </summary>
 public enum DataSeriesType
 {
     XyData,
     XyyData,
     XyzData
+}
+
+public enum AxisType
+{
+    X,
+    Y  
 }

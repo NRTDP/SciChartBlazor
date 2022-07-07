@@ -7,9 +7,17 @@
 		<LangVersion>latest</LangVersion>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
+
 	</PropertyGroup>
+
+	<PropertyGroup>
+		<DocumentationFile>SciChartBlazor.xml</DocumentationFile>
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+		<TreatSpecificWarningsAsErrors />
+	</PropertyGroup>
+
 	<ItemGroup>
-	  <Compile Include="..\SciChartBlazor.Demos\ChartDemos\LineRenderableSeriesExample.razor.cs" Link="LineRenderableSeriesExample.razor.cs" />
+		<None Remove="SciChartBlazor.xml" />
 	</ItemGroup>
 
 	<ItemGroup>

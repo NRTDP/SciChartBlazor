@@ -2,11 +2,23 @@
 using System.Text.Json.Serialization;
 
 namespace SciChartBlazor.Themes;
+
+/// <summary>
+/// The base of a scichart theme.
+/// </summary>
 [Serializable]
 public abstract class SciChartThemeBase
 {
+    /// <summary>
+    /// The name of a theme.
+    /// </summary>
     public abstract string Type { get; }
+
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+
+
     public virtual string AnnotationsGripsBackroundBrush { get; set; } = "#FFFFFF33";
+
     public virtual string AnnotationsGripsBorderBrush { get; set; } = "#232323FF";
     public virtual string Axis3DBandsFill { get; set; } = "#33333333";
     public virtual string AxisBandsFill { get; set; } = "#AAAAAA09";

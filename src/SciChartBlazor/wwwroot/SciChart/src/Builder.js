@@ -14,7 +14,7 @@ function resolveContext(element) {
 }
 
 
-export async function setLincenseKey(key) {
+export async function setLicenseKey(key) {
 
     SciChartSurface.setRuntimeLicenseKey(key);
 }
@@ -144,8 +144,6 @@ function getValueI32(e) {
     return Module.HEAP32[e >> 2];
 }
 
-
-
 export async function addAnnotations(element, jsonString) {
     const { sciChartSurface, wasmContext } = resolveContext(element);
     const annotations = chartBuilder.buildAnnotations(jsonString);
@@ -181,21 +179,28 @@ export async function addSeries(element, jsonString) {
     return ids
 }
 
-export async function addSeriesUnmarshalled(element, jsonString) {
+window.returnObjectReference = () => {
+    return
+    {
+        addSeriesUnmarshalled: function (element, jsonString) {
 
-    const id = BINDING.conv_string(element)
-    const { sciChartSurface, wasmContext } = chartInstances.hasOwnProperty(id) && chartInstances[id];
-    const json = BINDING.conv_string(jsonString);
-    const seriesArray = chartBuilder.buildSeries(wasmContext, json);
+            const id = BINDING.conv_string(element)
+            const { sciChartSurface, wasmContext } = chartInstances.hasOwnProperty(id) && chartInstances[id];
+            const json = BINDING.conv_string(jsonString);
+            const seriesArray = chartBuilder.buildSeries(wasmContext, json);
 
-    sciChartSurface.renderableSeries.add(...seriesArray);
-    sciChartSurface.zoomExtents();
+            sciChartSurface.renderableSeries.add(...seriesArray);
+            sciChartSurface.zoomExtents();
 
-    var ids = seriesArray.map(function (i) {
-        return i.id;
-    });
-    return ids[0];
+            var ids = seriesArray.map(function (i) {
+                return i.id;
+            });
+            return ids[0];
+        }
+    };
 }
+
+ 
 
 export async function clear(element) {
     const { sciChartSurface, wasmContext } = resolveContext(element);
