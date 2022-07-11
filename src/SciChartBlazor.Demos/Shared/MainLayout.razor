@@ -1,0 +1,29 @@
+﻿@using MudBlazor
+@inherits LayoutComponentBase
+@using System.Reflection
+
+<MudThemeProvider Theme=@mudThemeProvider/>
+<MudDialogProvider/>
+<MudSnackbarProvider/>
+
+
+@Body
+
+
+    @code {
+
+
+
+    MudTheme mudThemeProvider = new MudTheme()
+        {
+            Palette = new Palette()
+            {
+                Primary = "#4E2A84",
+                Secondary = Colors.Green.Accent4,
+                AppbarBackground = "#4E2A84",
+            }
+        };
+
+
+
+    }

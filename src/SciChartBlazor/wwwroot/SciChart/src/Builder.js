@@ -1,10 +1,27 @@
-﻿import { SciChartSurface } from "scichart/Charting/Visuals/SciChartSurface";
+﻿
+import { SciChartSurface } from "scichart/Charting/Visuals/SciChartSurface";
 import { SciChartJSLightTheme } from "scichart/Charting/Themes/SciChartJSLightTheme";
 import { chartBuilder } from "scichart/Builder/chartBuilder";
 import { RubberBandXySelectorModifier } from "././SciChartExtensions/RubberBandXySelectorModifier"
 import { EBaseType } from "scichart/types/BaseType"
 import { SciChartDefaults } from "scichart/Charting/Visuals/SciChartDefaults";
 import { XyDataSeries } from "scichart/Charting/Model/XyDataSeries";
+import { NumericAxis } from "scichart/Charting/Visuals/Axis/NumericAxis";
+
+
+
+import { MouseWheelZoomModifier } from "scichart/Charting/ChartModifiers/MouseWheelZoomModifier";
+import { ZoomExtentsModifier } from "scichart/Charting/ChartModifiers/ZoomExtentsModifier";
+import { ZoomPanModifier } from "scichart/Charting/ChartModifiers/ZoomPanModifier";
+
+import { FastLineRenderableSeries } from "scichart/Charting/Visuals/RenderableSeries/FastLineRenderableSeries";
+
+import { NumberRange } from "scichart/Core/NumberRange";
+import { Point } from "scichart/Core/Point";
+import { EAnimationType } from "scichart/types/AnimationType";
+import { ShadowEffect } from "scichart/Charting/Visuals/RenderableSeries/ShadowEffect";
+
+
 
 let chartInstances = {};
 
@@ -12,7 +29,8 @@ function resolveContext(element) {
     return chartInstances.hasOwnProperty(element.id) && chartInstances[element.id];
 }
 
-export async function setLincenseKey(key) {
+
+export async function setLicenseKey(key) {
 
     SciChartSurface.setRuntimeLicenseKey(key);
 }
@@ -142,8 +160,6 @@ function getValueI32(e) {
     return Module.HEAP32[e >> 2];
 }
 
-
-
 export async function addAnnotations(element, jsonString) {
     const { sciChartSurface, wasmContext } = resolveContext(element);
     const annotations = chartBuilder.buildAnnotations(jsonString);
@@ -179,21 +195,27 @@ export async function addSeries(element, jsonString) {
     return ids
 }
 
-export async function addSeriesUnmarshalled(element, jsonString) {
+window.returnObjectReference = () => {
+    return {
+        addSeriesUnmarshalled: function (element, jsonString) {
 
-    const id = BINDING.conv_string(element)
-    const { sciChartSurface, wasmContext } = chartInstances.hasOwnProperty(id) && chartInstances[id];
-    const json = BINDING.conv_string(jsonString);
-    const seriesArray = chartBuilder.buildSeries(wasmContext, json);
+            const id = BINDING.conv_string(element)
+            const { sciChartSurface, wasmContext } = chartInstances.hasOwnProperty(id) && chartInstances[id];
+            const json = BINDING.conv_string(jsonString);
+            const seriesArray = chartBuilder.buildSeries(wasmContext, json);
 
-    sciChartSurface.renderableSeries.add(...seriesArray);
-    sciChartSurface.zoomExtents();
+            sciChartSurface.renderableSeries.add(...seriesArray);
+            sciChartSurface.zoomExtents();
 
-    var ids = seriesArray.map(function (i) {
-        return i.id;
-    });
-    return ids[0];
+            var ids = seriesArray.map(function (i) {
+                return i.id;
+            });
+            return BINDING.js_string_to_mono_string(ids[0]);
+        }
+    };
 }
+
+ 
 
 export async function clear(element) {
     const { sciChartSurface, wasmContext } = resolveContext(element);
@@ -206,4 +228,41 @@ export function addCustomEventListener(dotNetObjectRef, name) {
     document.addEventListener(name, (event) => {
         dotNetObjectRef.invokeMethodAsync('OnCustomEvent', event.detail)
     });
+}
+
+export async function test(element) {
+
+    SciChartSurface.useWasmFromCDN()
+  
+    const { sciChartSurface, wasmContext } = await SciChartSurface.create(element.id);
+
+
+    sciChartSurface.xAxes.add(new NumericAxis(wasmContext));
+    sciChartSurface.yAxes.add(new NumericAxis(wasmContext, { growBy: new NumberRange(0.05, 0.05) }));
+
+    const xValues = Array.from({ length: 100 }, (x, i) => i);
+    const yValues = xValues.map(x => Math.sin(x * 0.1));
+
+    sciChartSurface.renderableSeries.add(new FastLineRenderableSeries(wasmContext, {
+        dataSeries: new XyDataSeries(wasmContext, { xValues, yValues }),
+        stroke: "#ff6600",
+        strokeThickness: 5,
+        animation: { type: EAnimationType.Wave, options: { zeroLine: -1, pointDurationFraction: 0.5, duration: 1000 } },
+        effect: new ShadowEffect(wasmContext, { brightness: 1, offset: new Point(5, -10), range: 0.7 })
+
+    }));
+
+    sciChartSurface.chartModifiers.add(new ZoomPanModifier());
+    sciChartSurface.chartModifiers.add(new ZoomExtentsModifier());
+    sciChartSurface.chartModifiers.add(new MouseWheelZoomModifier());
+
+    // Zoom to fit
+    sciChartSurface.zoomExtents();
+
+    const definition = sciChartSurface.toJSON(true);
+
+
+    return JSON.stringify(definition);
+
+
 }

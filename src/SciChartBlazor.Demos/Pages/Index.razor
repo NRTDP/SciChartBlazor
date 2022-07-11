@@ -1,0 +1,45 @@
+﻿@page "/"
+@using System.Reflection
+@using MudBlazor
+
+<MudLayout>
+    <MudAppBar Elevation="1">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+        <MudSpacer />
+           <MudText Typo="Typo.h6" >SciChartBlazor Demos - WASM</MudText>
+              <MudSpacer />
+       
+    </MudAppBar>
+    <MudDrawer @bind-Open="@_drawerOpen" ClipMode="DrawerClipMode.Docked">
+         <MudDrawerHeader >
+            <MudText Typo="Typo.h6" Color="Color.Primary">Charts</MudText>
+            </MudDrawerHeader>
+
+
+        <MudList>
+            @foreach (var type in availableComponentTypes)
+            {
+                <MudListItem OnClick="@(() => selectedType = type)" @key="type.Name">@getNiceName(type)</MudListItem>
+            }
+        </MudList>
+          </MudDrawer>
+
+    <MudMainContent Class="mt-4">
+
+        <MudText Style="padding-left: 24px; margin-left: 24px;">
+            @getDescription(selectedType)
+        </MudText>
+        <MudPaper Elevation="5" Style="padding: 24px; margin: 24px;">
+            @if (@selectedType == null)
+            {
+                <span>Select a component</span>
+            }
+            else
+            {
+                @TestComponent()
+            }
+        </MudPaper>
+
+    </MudMainContent>
+</MudLayout>
+
