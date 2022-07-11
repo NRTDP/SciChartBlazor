@@ -9,7 +9,6 @@ namespace SciChartBlazor;
 /// </summary>
 public static class ServiceCollectionExtensions
 {
-
     /// <summary>
     /// An extention for ServiceCollection. Used to add the SciChartBlazor service.
     /// </summary>
@@ -22,5 +21,4 @@ public static class ServiceCollectionExtensions
         services.TryAddScoped<ISciChartBlazorService, SciChartBlazorService>();
         return services;
     }
-
 }

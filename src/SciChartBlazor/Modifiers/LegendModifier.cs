@@ -13,5 +13,4 @@ public class LegendModifier : ModifierBase
     /// The type.
     /// </value>
     public override string Type => "Legend";
-
 }

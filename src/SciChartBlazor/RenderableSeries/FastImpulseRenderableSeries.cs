@@ -52,6 +52,4 @@ public class FastImpulseRenderableSeries<TX, TY> : RenderableSeriesBase
     /// The size.
     /// </value>
     public double? Size { get; set; }
-
-
 }

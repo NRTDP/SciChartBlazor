@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
+﻿using Microsoft.JSInterop;
 
 namespace SciChartBlazor;
 
@@ -26,8 +25,7 @@ public class CustomEventHelper<T>
     /// <param name="args">The arguments.</param>
     /// <returns></returns>
     [JSInvokable]
-    public Task OnCustomEvent(T args) => 
-        _callback(args) ;
+    public Task OnCustomEvent(T args) => _callback(args);
 }
 
 /// <summary>
@@ -58,20 +56,8 @@ public class CustomEventInterop<T> : IDisposable
     public ValueTask<string> SetupCustomEventCallback(string eventName, Func<T, Task> callback)
     {
         Reference = DotNetObjectReference.Create(new CustomEventHelper<T>(callback));
-        return _jsRuntime.InvokeAsync<string>("sciChartBlazorJson.addCustomEventListener", Reference,eventName);
+        return _jsRuntime.InvokeAsync<string>("sciChartBlazorJson.addCustomEventListener", Reference, eventName);
     }
 
-    /// <summary>
-    /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-    /// </summary>
-    public void Dispose()
-    {
-        Reference?.Dispose();
-    }
+    public void Dispose() => Reference?.Dispose();
 }
-
-
-
-
-
-

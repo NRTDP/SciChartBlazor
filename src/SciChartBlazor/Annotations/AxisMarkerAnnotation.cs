@@ -55,4 +55,3 @@ public class AxisMarkerAnnotation : AnnotationBase
     /// </value>
     public string? FontFamily { get; set; }
 }
-
