@@ -9,11 +9,11 @@ namespace SciChartBlazor.Demos.ChartDemos
         /// <summary>
         /// 
         /// </summary>
-        public static string __description__ = "An example using the LineRenderable series";
+        public static string __description__ = "Used for generating json for testing";
         /// <summary>
         /// 
         /// </summary>
-        public static string __niceName__ = "LineRenderable Series";
+        public static string __niceName__ = "TestSeries";
 
 
         private string Id { get; set; } = "C" + Guid.NewGuid().ToString();
@@ -36,6 +36,7 @@ namespace SciChartBlazor.Demos.ChartDemos
                 _chartBuilder = new SciChartBuilder(_chart, JSRuntime, sciChartBlazorService);
 
                 string json = await _chartBuilder.Test();
+
             }
 
             await base.OnAfterRenderAsync(firstRender);

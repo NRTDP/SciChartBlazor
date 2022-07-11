@@ -72,9 +72,18 @@ public class SciChartBuilder : IDisposable
             await AddModifiers(modifiers);
     }
 
+    /// <summary>
+    /// Runs the Test JS script. For testing Json strings.
+    /// </summary>
+    /// <returns></returns>
     public async Task<string> Test()
     {
-       return await _jsRuntime.InvokeAsync<string>("sciChartBlazorJson.test", _chart);
+
+        await this._sciChartBlazorService.SetRuntimeLicenseKey();
+
+        var data = await _jsRuntime.InvokeAsync<string>("sciChartBlazorJson.test", _chart);
+
+        return data;
     }
 
     /// <summary>

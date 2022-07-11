@@ -1,9 +1,8 @@
 ﻿namespace SciChartBlazor.Styles;
-
-[Serializable]
 /// <summary>
 /// Shader effect. Not currently working :/
 /// </summary>
+[Serializable]
 public class ShaderEffect : SciChartElementBase
 {
 	string _type { get; }

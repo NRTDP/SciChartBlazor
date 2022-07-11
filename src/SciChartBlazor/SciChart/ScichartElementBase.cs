@@ -4,10 +4,26 @@ using System.Text.Json.Serialization;
 using SciChartBlazor.DataSeries;
 
 namespace SciChartBlazor;
+/// <summary>
+/// The base class for all SciChartElements. Handles Json conversion.
+/// </summary>
 public abstract class SciChartElementBase
 {
+    /// <summary>
+    /// The type of the element. Usually the name of the element in JS.
+    /// </summary>
+    /// <value>
+    /// The type.
+    /// </value>
     [SciChartElementType]
     public abstract string Type { get; }
+
+    /// <summary>
+    /// Gets or sets the identifier.
+    /// </summary>
+    /// <value>
+    /// The identifier.
+    /// </value>
     public string Id { get; set; } = default!;
 
     JsonSerializerOptions _op = new()
@@ -18,8 +34,23 @@ public abstract class SciChartElementBase
         Converters = { new JsonStringEnumConverter(), new DataSeriesConverter() }
     };
 
+
+    /// <summary>
+    /// A converter for serializing Dataseries and interfaces.
+    /// </summary>
+
     public class DataSeriesConverter : JsonConverter<DataSeriesBase>
     {
+        /// <summary>
+        /// Reads and converts the JSON to type.
+        /// </summary>
+        /// <param name="reader">The reader.</param>
+        /// <param name="typeToConvert">The type to convert.</param>
+        /// <param name="options">An object that specifies serialization options to use.</param>
+        /// <returns>
+        /// The converted value.
+        /// </returns>
+        /// <exception cref="System.NotImplementedException"></exception>
         public override DataSeriesBase Read(
             ref Utf8JsonReader reader,
             Type typeToConvert,
@@ -28,6 +59,12 @@ public abstract class SciChartElementBase
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Writes a specified value as JSON.
+        /// </summary>
+        /// <param name="writer">The writer to write to.</param>
+        /// <param name="value">The value to convert to JSON.</param>
+        /// <param name="options">An object that specifies serialization options to use.</param>
         public override void Write(
             Utf8JsonWriter writer,
             DataSeriesBase value,
@@ -47,7 +84,10 @@ public abstract class SciChartElementBase
             }
         }
     }
-
+    /// <summary>
+    /// Gets the json.
+    /// </summary>
+    /// <returns></returns>
     public string GetJson()
     {
         return JsonSerializer.Serialize(GetJsonObject(), _op);;
@@ -171,32 +211,57 @@ public abstract class SciChartElementBase
     }
 }
 
+/// <summary>
+/// An attribute that defines the type/name of an element.
+/// </summary>
+/// <seealso cref="System.Attribute" />
 [AttributeUsage(AttributeTargets.Property)]
 public class SciChartElementType : Attribute { }
 
+/// <summary>
+/// An attribute that informs the Json parser that this option also contains options.
+/// </summary>
+/// <seealso cref="System.Attribute" />
 [AttributeUsage(AttributeTargets.Property)]
 public class HasOptions : Attribute { }
 
+/// <summary>
+/// An attribute that defines this property as a custom element.
+/// </summary>
+/// <seealso cref="System.Attribute" />
 [AttributeUsage(AttributeTargets.Property)]
-public class SciChartCustomElementType : Attribute
-{
+public class SciChartCustomElementType : Attribute { }
 
-}
-
+/// <summary>
+/// An attribute that defines this property as a dataseries of type <type name="DataSeriesType" />
+/// </summary>
+/// <seealso cref="System.Attribute" />
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Class)]
 public class SciChartDataSeries : Attribute
 {
     DataSeriesType type;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SciChartDataSeries"/> class.
+    /// </summary>
+    /// <param name="dataSeriesType">Type of the data series.</param>
     public SciChartDataSeries(DataSeriesType dataSeriesType)
     {
         type = dataSeriesType;
     }
 
+    /// <summary>
+    /// Gets the type of the data.
+    /// </summary>
+    /// <returns></returns>
     public DataSeriesType GetDataType()
     {
         return type;
     }
 }
 
+/// <summary>
+/// An attribute informing the json writer that this enum should be written as an int.
+/// </summary>
+/// <seealso cref="System.Attribute" />
 [AttributeUsage(AttributeTargets.Property)]
 public class PureIntEnum : Attribute { }

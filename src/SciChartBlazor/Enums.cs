@@ -54,6 +54,7 @@ public enum XyDirection
     YDirection
 }
 
+
 public enum DragMode
 {
     Panning,

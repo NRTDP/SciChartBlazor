@@ -67,12 +67,12 @@ namespace SciChartBlazor.Demos.ChartDemos
             {
                 //Stroke = "black",
                 StrokeThickness = 1,
-                ShaderEffect = new Styles.ShaderEffect(ShaderEffectType.Glow)
+                Effect = new Styles.ShaderEffect(ShaderEffectType.Glow)
                 {
-                    Range = 0,
-                    Color = "#333333",
-                    Intensity = 1,
-                    Offset = new Point(10, 10)
+                //   Range = 0.7,
+                    Color = "green",
+                   Intensity = 1,
+                    Offset = new Point(5, 5)
                  }
             };
 

@@ -6,6 +6,22 @@ import { RubberBandXySelectorModifier } from "././SciChartExtensions/RubberBandX
 import { EBaseType } from "scichart/types/BaseType"
 import { SciChartDefaults } from "scichart/Charting/Visuals/SciChartDefaults";
 import { XyDataSeries } from "scichart/Charting/Model/XyDataSeries";
+import { NumericAxis } from "scichart/Charting/Visuals/Axis/NumericAxis";
+
+
+
+import { MouseWheelZoomModifier } from "scichart/Charting/ChartModifiers/MouseWheelZoomModifier";
+import { ZoomExtentsModifier } from "scichart/Charting/ChartModifiers/ZoomExtentsModifier";
+import { ZoomPanModifier } from "scichart/Charting/ChartModifiers/ZoomPanModifier";
+
+import { FastLineRenderableSeries } from "scichart/Charting/Visuals/RenderableSeries/FastLineRenderableSeries";
+
+import { NumberRange } from "scichart/Core/NumberRange";
+import { Point } from "scichart/Core/Point";
+import { EAnimationType } from "scichart/types/AnimationType";
+import { ShadowEffect } from "scichart/Charting/Visuals/RenderableSeries/ShadowEffect";
+
+
 
 let chartInstances = {};
 
@@ -216,10 +232,9 @@ export function addCustomEventListener(dotNetObjectRef, name) {
 
 export async function test(element) {
 
-    initSciChart(element, theme = null);
-
-
-    const { sciChartSurface, wasmContext } = resolveContext(element);
+    SciChartSurface.useWasmFromCDN()
+  
+    const { sciChartSurface, wasmContext } = await SciChartSurface.create(element.id);
 
 
     sciChartSurface.xAxes.add(new NumericAxis(wasmContext));
@@ -237,8 +252,17 @@ export async function test(element) {
 
     }));
 
+    sciChartSurface.chartModifiers.add(new ZoomPanModifier());
+    sciChartSurface.chartModifiers.add(new ZoomExtentsModifier());
+    sciChartSurface.chartModifiers.add(new MouseWheelZoomModifier());
 
-    return sciChartSurface.toJson();
+    // Zoom to fit
+    sciChartSurface.zoomExtents();
+
+    const definition = sciChartSurface.toJSON(true);
+
+
+    return JSON.stringify(definition);
 
 
 }

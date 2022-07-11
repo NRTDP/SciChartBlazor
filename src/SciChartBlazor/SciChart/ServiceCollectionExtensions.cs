@@ -4,13 +4,17 @@ using SciChartBlazor.Services;
 
 namespace SciChartBlazor;
 
+/// <summary>
+/// An extention for ServiceCollection. Used to add the SciChartBlazor service.
+/// </summary>
 public static class ServiceCollectionExtensions
 {
 
     /// <summary>
-    /// Adds IKeyInterceptor as a Transient instance.
+    /// An extention for ServiceCollection. Used to add the SciChartBlazor service.
     /// </summary>
     /// <param name="services">IServiceCollection</param>
+    /// <param name="options">The Scichart options</param>
     /// <returns>Continues the IServiceCollection chain.</returns>
     public static IServiceCollection AddSciChart(this IServiceCollection services, Action<SciChartOptions> options)
     {

@@ -12,16 +12,12 @@
 
 	<PropertyGroup>
 		<DocumentationFile>SciChartBlazor.xml</DocumentationFile>
-		<!--<TreatWarningsAsErrors>True</TreatWarningsAsErrors>-->
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
 		<TreatSpecificWarningsAsErrors />
 	</PropertyGroup>
 
 	<ItemGroup>
 		<None Remove="SciChartBlazor.xml" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Include="..\SciChartBlazor.Demos\ChartDemos\TestChartExample.razor.cs" Link="TestChartExample.razor.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
