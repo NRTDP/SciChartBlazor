@@ -59,5 +59,8 @@ public class CustomEventInterop<T> : IDisposable
         return _jsRuntime.InvokeAsync<string>("sciChartBlazorJson.addCustomEventListener", Reference, eventName);
     }
 
+    /// <summary>
+    /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+    /// </summary>
     public void Dispose() => Reference?.Dispose();
 }

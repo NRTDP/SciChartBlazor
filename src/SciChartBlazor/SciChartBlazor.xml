@@ -613,34 +613,6 @@
             The is inner axis.
             </value>
         </member>
-        <member name="T:SciChartBlazor.Axes.SciChartNumberRange">
-            <summary>
-            A number range used by SciChart.
-            </summary>
-        </member>
-        <member name="M:SciChartBlazor.Axes.SciChartNumberRange.#ctor(System.Double,System.Double)">
-            <summary>
-            Initializes a new instance of the <see cref="T:SciChartBlazor.Axes.SciChartNumberRange"/> class.
-            </summary>
-            <param name="min">The minimum.</param>
-            <param name="max">The maximum.</param>
-        </member>
-        <member name="P:SciChartBlazor.Axes.SciChartNumberRange.Min">
-            <summary>
-            Determines the minimum of the parameters.
-            </summary>
-            <value>
-            The minimum.
-            </value>
-        </member>
-        <member name="P:SciChartBlazor.Axes.SciChartNumberRange.Max">
-            <summary>
-            Determines the maximum of the parameters.
-            </summary>
-            <value>
-            The maximum.
-            </value>
-        </member>
         <member name="T:SciChartBlazor.Axes.CategoryAxis">
             <summary>
             
@@ -681,6 +653,34 @@
             </summary>
             <value>
             The type.
+            </value>
+        </member>
+        <member name="T:SciChartBlazor.Axes.SciChartNumberRange">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SciChartBlazor.Axes.SciChartNumberRange.#ctor(System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SciChartBlazor.Axes.SciChartNumberRange"/> class.
+            </summary>
+            <param name="min">The minimum.</param>
+            <param name="max">The maximum.</param>
+        </member>
+        <member name="P:SciChartBlazor.Axes.SciChartNumberRange.Min">
+            <summary>
+            Determines the minimum of the parameters.
+            </summary>
+            <value>
+            The minimum.
+            </value>
+        </member>
+        <member name="P:SciChartBlazor.Axes.SciChartNumberRange.Max">
+            <summary>
+            Determines the maximum of the parameters.
+            </summary>
+            <value>
+            The maximum.
             </value>
         </member>
         <member name="T:SciChartBlazor.DataSeries.DataSeriesBase">
