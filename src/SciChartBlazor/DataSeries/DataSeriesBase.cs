@@ -4,15 +4,39 @@ using static SciChartBlazor.SciChartElementBase;
 
 namespace SciChartBlazor.DataSeries;
 
-[Serializable]
+/// <summary>
+/// 
+/// </summary>
 public abstract class DataSeriesBase
 {
+    /// <summary>
+    /// Gets or sets the name of the data series.
+    /// </summary>
+    /// <value>
+    /// The name of the data series.
+    /// </value>
     public string? DataSeriesName { get; set; } = null;
 
+    /// <summary>
+    /// Gets or sets the data is sorted in x.
+    /// </summary>
+    /// <value>
+    /// The data is sorted in x.
+    /// </value>
     public bool? DataIsSortedInX { get; set; } = null;
 
+    /// <summary>
+    /// Gets or sets the contains na n.
+    /// </summary>
+    /// <value>
+    /// The contains na n.
+    /// </value>
     public bool? ContainsNaN { get; set; } = null;
 
+    /// <summary>
+    /// Gets the json.
+    /// </summary>
+    /// <returns></returns>
     public string GetJson()
     {
         var typeAttribute = this.GetType().GetCustomAttributes(typeof(SciChartDataSeries), true).FirstOrDefault() as SciChartDataSeries;

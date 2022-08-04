@@ -1,10 +1,24 @@
-﻿namespace SciChartBlazor.Themes;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 
+namespace SciChartBlazor.Themes;
+
+/// <summary>
+/// The base of a scichart theme.
+/// </summary>
 [Serializable]
 public abstract class SciChartThemeBase
 {
+    /// <summary>
+    /// The name of a theme.
+    /// </summary>
     public abstract string Type { get; }
+
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+
+
     public virtual string AnnotationsGripsBackroundBrush { get; set; } = "#FFFFFF33";
+
     public virtual string AnnotationsGripsBorderBrush { get; set; } = "#232323FF";
     public virtual string Axis3DBandsFill { get; set; } = "#33333333";
     public virtual string AxisBandsFill { get; set; } = "#AAAAAA09";
@@ -30,8 +44,10 @@ public abstract class SciChartThemeBase
     public virtual string LabelForegroundBrush { get; set; } = "#555555FF";
     public virtual string LegendBackgroundBrush { get; set; } = "#33333333";
     public virtual string LineSeriesColor { get; set; } = "#777777FF";
+
     public virtual string LoadingAnimationBackground { get; set; } = "#F9F9F9FF";
     public virtual string LoadingAnimationForeground { get; set; } = "#777777FF";
+
     public virtual string MajorGridLineBrush { get; set; } = "#CFCFCFFF";
     public virtual string MinorGridLineBrush { get; set; } = "#CFCFCFFF";
     public virtual string MountainAreaBrush { get; set; } = "#76B7E2B4";
@@ -56,5 +72,5 @@ public abstract class SciChartThemeBase
     public virtual string UpBandSeriesLineColor { get; set; } = "#52CC54FF";
     public virtual string UpBodyBrush { get; set; } = "#52CC54A0";
     public virtual string UpWickColor { get; set; } = "#52CC54FF";
-    public virtual string AxisTitleColor { get; set; } = "#777777FF";
+    public virtual string AxisTitleColor { get; set; } = "#777777FF";  
 }

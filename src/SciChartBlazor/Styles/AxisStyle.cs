@@ -1,9 +1,14 @@
 ﻿namespace SciChartBlazor.Styles;
 
+/// <summary>
+/// The axis style.
+/// </summary>
 public class AxisStyle
 {
-	public string? AxisTitle { get; set; }
-	public bool? DrawMajorBands { get; set; } = true;
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+
+    public string? AxisTitle { get; set; }
+    public bool? DrawMajorBands { get; set; } = true;
 	public string? AxisBandsFill { get; set; }
 	public AxisTitleStyle? AxisTitleStyle { get; set; }
 	public MajorGridLineStyle? MajorGridLineStyle { get; set; }
