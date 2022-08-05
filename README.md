@@ -76,8 +76,6 @@ After initialization you can start building your chart. i.e.:
 ```
 * Creating Axis
 ```C#
-private async Task CreateAxis()
-        {
             var XAxis = new NumericAxis()
             {
                 AxisTitle = "X",
