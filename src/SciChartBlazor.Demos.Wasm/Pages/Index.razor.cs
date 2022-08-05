@@ -2,9 +2,9 @@ using Microsoft.AspNetCore.Components;
 using System.Reflection;
 using MudBlazor;
 
-namespace SciChartBlazor.Demos.Pages
+namespace SciChartBlazor.Demos.Wasm.Pages
 {
-    public partial class Index
+    public partial class Index : ComponentBase
     {
         Type selectedType = default!;
         Type[] availableComponentTypes = new Type[0];
@@ -17,6 +17,18 @@ namespace SciChartBlazor.Demos.Pages
         IEnumerable<Type> getChartComponenTypes()
         {
             foreach (var type in typeof(Program).Assembly.GetTypes().OrderBy(x => x.Name))
+            {
+                if (!type.Name.Contains("ChartExample"))
+                    continue;
+                if (type.Name.StartsWith("<"))
+                    continue;
+                if (!type.GetInterfaces().Contains(typeof(IComponent)))
+                    continue;
+                yield return type;
+            }
+
+            var assembly = Assembly.GetAssembly(typeof(SciChartBlazor.Shared.ChartDemos.LineRenderableSeriesChartExample));
+            foreach (var type in assembly.GetTypes().OrderBy(x => x.Name))
             {
                 if (!type.Name.Contains("ChartExample"))
                     continue;

@@ -2,8 +2,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MudBlazor.Services;
 using SciChartBlazor;
-using SciChartBlazor.Demos;
-using System.Reflection;
+using SciChartBlazor.Demos.Wasm;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
