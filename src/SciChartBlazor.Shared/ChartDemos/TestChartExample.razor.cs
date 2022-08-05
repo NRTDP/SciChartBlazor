@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using SciChartBlazor.Services;
 
-namespace SciChartBlazor.Demos.ChartDemos
+namespace SciChartBlazor.Shared.ChartDemos
 {
     public partial class TestChartExample : ComponentBase
     {

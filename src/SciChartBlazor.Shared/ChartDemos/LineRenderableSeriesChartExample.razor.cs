@@ -6,7 +6,7 @@ using SciChartBlazor.Modifiers;
 using SciChartBlazor.RenderableSeries;
 using SciChartBlazor.Services;
 
-namespace SciChartBlazor.Demos.ChartDemos
+namespace SciChartBlazor.Shared.ChartDemos
 {
     public partial class LineRenderableSeriesChartExample : ComponentBase
     {
