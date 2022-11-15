@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "scichart": "^2.2.2396"
+    "scichart": "^2.2.2415"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^9.1.0",
