@@ -1,25 +1,22 @@
 ﻿
-import { SciChartSurface } from "scichart/Charting/Visuals/SciChartSurface";
-import { SciChartJSLightTheme } from "scichart/Charting/Themes/SciChartJSLightTheme";
-import { chartBuilder } from "scichart/Builder/chartBuilder";
 import { RubberBandXySelectorModifier } from "././SciChartExtensions/RubberBandXySelectorModifier"
-import { EBaseType } from "scichart/types/BaseType"
-import { SciChartDefaults } from "scichart/Charting/Visuals/SciChartDefaults";
-import { XyDataSeries } from "scichart/Charting/Model/XyDataSeries";
-import { NumericAxis } from "scichart/Charting/Visuals/Axis/NumericAxis";
-
-
-
-import { MouseWheelZoomModifier } from "scichart/Charting/ChartModifiers/MouseWheelZoomModifier";
-import { ZoomExtentsModifier } from "scichart/Charting/ChartModifiers/ZoomExtentsModifier";
-import { ZoomPanModifier } from "scichart/Charting/ChartModifiers/ZoomPanModifier";
-
-import { FastLineRenderableSeries } from "scichart/Charting/Visuals/RenderableSeries/FastLineRenderableSeries";
-
-import { NumberRange } from "scichart/Core/NumberRange";
-import { Point } from "scichart/Core/Point";
-import { EAnimationType } from "scichart/types/AnimationType";
-import { ShadowEffect } from "scichart/Charting/Visuals/RenderableSeries/ShadowEffect";
+import {
+    SciChartSurface,
+    SciChartJSLightTheme,
+    chartBuilder,
+    EBaseType,
+    SciChartDefaults,
+    XyDataSeries,
+    NumericAxis,
+    MouseWheelZoomModifier,
+    ZoomExtentsModifier,
+    ZoomPanModifier,
+    FastLineRenderableSeries,
+    NumberRange,
+    Point,
+    EAnimationType,
+    ShadowEffect
+} from "scichart";
 
 
 
