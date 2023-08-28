@@ -12,7 +12,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddMudServices();
 builder.Services.AddSciChart(options =>
 {
-    options.RuntimeLicenseKey = builder.Configuration["SciChart:LicenseKey"];
+    //options.RuntimeLicenseKey = builder.Configuration["SciChart:LicenseKey"];
 });
 
 await builder.Build().RunAsync();
