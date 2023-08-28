@@ -16,7 +16,7 @@ builder.Services.AddMudServices();
 
 builder.Services.AddSciChart(options =>
 {
-    options.RuntimeLicenseKey = "LICENSE_HERE";
+    //options.RuntimeLicenseKey = "LICENSE_HERE";
 });
 
 
