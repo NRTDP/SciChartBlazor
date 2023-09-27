@@ -253,5 +253,10 @@ public abstract class AxisBase : SciChartElementBase
     /// </value>
     public bool? isInnerAxis { get; set; } = null;
 
+    /// <summary>
+    /// Gets or sets flipped cordinates.
+    /// </summary>
+    public bool? FlippedCoordinates { get; set; } = null;
+
     //to do: add label providers
 }
