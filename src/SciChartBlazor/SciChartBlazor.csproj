@@ -21,6 +21,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Include="..\SciChartBlazor.Shared\ChartDemos\TextLabelProviderChartExample.razor.cs" Link="TextLabelProviderChartExample.razor.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<SupportedPlatform Include="browser" />
 	</ItemGroup>
 
@@ -29,8 +33,8 @@
 	</ItemGroup>
 
 	<Target Name="PublishRunWebpack" AfterTargets="Build">
-		<Exec WorkingDirectory="wwwroot\SciChart\" Command="npm install" />
-		<Exec WorkingDirectory="wwwroot\SciChart\" Command="npm run build" />
+		<!--<Exec WorkingDirectory="wwwroot\SciChart\" Command="npm install" />
+		<Exec WorkingDirectory="wwwroot\SciChart\" Command="npm run build" />-->
 	</Target>
 
 </Project>

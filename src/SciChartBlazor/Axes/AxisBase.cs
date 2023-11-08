@@ -1,4 +1,5 @@
-﻿using SciChartBlazor.Styles;
+﻿using SciChartBlazor.Axes.LabelProviders;
+using SciChartBlazor.Styles;
 
 namespace SciChartBlazor.Axes;
 
@@ -259,4 +260,13 @@ public abstract class AxisBase : SciChartElementBase
     public bool? FlippedCoordinates { get; set; } = null;
 
     //to do: add label providers
+
+    /// <summary>
+    /// Gets or sets the label provider.
+    /// </summary>
+    /// <value>
+    /// The label provider.
+    /// </value>
+    [HasOptions]
+    public TextLabelProvider? LabelProvider { get; set; }
 }

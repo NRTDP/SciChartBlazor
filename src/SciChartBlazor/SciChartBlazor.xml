@@ -613,6 +613,19 @@
             The is inner axis.
             </value>
         </member>
+        <member name="P:SciChartBlazor.Axes.AxisBase.FlippedCoordinates">
+            <summary>
+            Gets or sets flipped cordinates.
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.Axes.AxisBase.LabelProvider">
+            <summary>
+            Gets or sets the label provider.
+            </summary>
+            <value>
+            The label provider.
+            </value>
+        </member>
         <member name="T:SciChartBlazor.Axes.CategoryAxis">
             <summary>
             
@@ -625,6 +638,28 @@
             </summary>
             <value>
             The type.
+            </value>
+        </member>
+        <member name="T:SciChartBlazor.Axes.LabelProviders.TextLabelProvider">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:SciChartBlazor.SciChartElementBase" />
+        </member>
+        <member name="P:SciChartBlazor.Axes.LabelProviders.TextLabelProvider.Type">
+            <summary>
+            Gets the type.
+            </summary>
+            <value>
+            The type.
+            </value>
+        </member>
+        <member name="P:SciChartBlazor.Axes.LabelProviders.TextLabelProvider.Labels">
+            <summary>
+            Gets or sets the labels.
+            </summary>
+            <value>
+            The labels.
             </value>
         </member>
         <member name="T:SciChartBlazor.Axes.LogarithmicAxis">
@@ -2845,6 +2880,29 @@
             <summary>
             The theme name.
             </summary>
+        </member>
+        <member name="T:SciChartBlazor.Shared.ChartDemos.TextLabelProviderChartExample">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Components.ComponentBase" />
+        </member>
+        <member name="F:SciChartBlazor.Shared.ChartDemos.TextLabelProviderChartExample.__description__">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SciChartBlazor.Shared.ChartDemos.TextLabelProviderChartExample.__niceName__">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SciChartBlazor.Shared.ChartDemos.TextLabelProviderChartExample.OnAfterRenderAsync(System.Boolean)">
+            <summary>
+            Initialize the chart OnAfterRenderAsync
+            </summary>
+            <param name="firstRender"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

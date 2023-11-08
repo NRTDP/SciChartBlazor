@@ -103,7 +103,7 @@ public class SciChartBuilder : IDisposable
     /// <returns></returns>
     public async Task AddAxis(AxisBase Axis, AxisType axisType)
     {
-        //Console.WriteLine(Axis.GetJson());
+        //var json = Axis.GetJson();
 
         if (axisType == AxisType.X)
             await _jsRuntime.InvokeVoidAsync("sciChartBlazorJson.addXAxis", _chart, Axis.GetJson());

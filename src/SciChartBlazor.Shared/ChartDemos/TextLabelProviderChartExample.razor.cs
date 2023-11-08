@@ -1,0 +1,173 @@
+using global::System;
+using global::System.Collections.Generic;
+using global::System.Linq;
+using global::System.Threading.Tasks;
+using global::Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
+using SciChartBlazor;
+using SciChartBlazor.Shared;
+using Microsoft.JSInterop;
+using SciChartBlazor.Axes;
+using SciChartBlazor.DataSeries;
+using SciChartBlazor.Modifiers;
+using SciChartBlazor.RenderableSeries;
+using SciChartBlazor.Services;
+
+namespace SciChartBlazor.Shared.ChartDemos
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Components.ComponentBase" />
+    public partial class TextLabelProviderChartExample : ComponentBase
+    {
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string __description__ = "An example using the LineRenderable series";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string __niceName__ = "LineRenderable Series";
+
+
+        private string Id { get; set; } = "C" + Guid.NewGuid().ToString();
+
+        private protected ElementReference _chart;
+
+        SciChartBuilder _chartBuilder = default!;
+
+
+        [Inject] IJSRuntime JSRuntime { get; set; } = default!;
+        [Inject] ISciChartBlazorService sciChartBlazorService { get; set; } = default!;
+
+        /// <summary>
+        /// Initialize the chart OnAfterRenderAsync
+        /// </summary>
+        /// <param name="firstRender"></param>
+        /// <returns></returns>
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if (firstRender)
+            {
+                //Create the chart
+                _chartBuilder = new SciChartBuilder(_chart, JSRuntime, sciChartBlazorService);
+                await _chartBuilder.CreateChart();
+                await AddModifiers();
+                await CreateAxis();
+                await LoadData();
+            }
+
+            await base.OnAfterRenderAsync(firstRender);
+
+        }
+        private async Task LoadData()
+        {
+            double[] x = new double[3];
+            double[] y = new double[3];
+
+            for (int i = 0; i < 3; i++)
+            {
+                x[i] = (double)i;
+                y[i] =  Random.Shared.Next(100);
+            }
+
+            XyDataSeries<double, double> dataSeries = new(x, y) { DataSeriesName = "Data", ContainsNaN = false, DataIsSortedInX = true }; // using containsNaN = false and DataIsSortedInX speeds up data loading
+             FastColumnRenderableSeries<double, double> series = new(dataSeries)
+            {
+                //Stroke = "black",
+                StrokeThickness = 1,
+                Effect = new Styles.ShaderEffect(ShaderEffectType.Glow)
+                {
+                    //   Range = 0.7,
+                    Color = "green",
+                    Intensity = 1,
+                    Offset = new Point(5, 5)
+                }
+            };
+
+            await _chartBuilder.AddSeries(series);
+        }
+
+        private async Task AddModifiers()
+        {
+            List<ModifierBase> modifiers = new()
+            {
+                new SciChartBlazor.Modifiers.RubberBandXyZoomModifier
+                {
+                    IsAnimated = true,
+                    AnimationDuration = 400,
+                    Fill = "#FFFFFF33",
+                    Stroke = "red",
+                    StrokeThickness = 1,
+                    XyDirection = XyDirection.XyDirection
+                },
+                new SciChartBlazor.Modifiers.ZoomExtentsModifier
+                {
+                    IsAnimated = true,
+                    AnimationDuration = 400
+                },
+                new MouseWheelZoomModifier(),
+                new ZoomPanModifier() { ExecuteOn = ExecuteOn.MouseMiddleButton }
+            };
+
+            await _chartBuilder.AddModifiers(modifiers);
+        }
+
+        private async Task CreateAxis()
+        {
+            var XAxis = new NumericAxis()
+            {
+                AxisTitle = "Fruit",
+
+                AxisTitleStyle = new Styles.AxisTitleStyle()
+                {
+                    FontSize = 24,
+                    Color = "black",
+                },
+                MajorGridLineStyle = new Styles.MajorGridLineStyle()
+                {
+                    StrokeThickness = 0
+                },
+                MinorGridLineStyle = new Styles.MinorGridLineStyle()
+                {
+                    StrokeThickness = 0
+                },
+
+
+                LabelProvider = new Axes.LabelProviders.TextLabelProvider() { Labels = new string[]{ "apple", "bananna", "pear" } }
+
+            };
+            var YAxis = new NumericAxis()
+            {
+                AxisTitle = "Y",
+                AxisTitleStyle = new Styles.AxisTitleStyle()
+                {
+                    FontSize = 24,
+                    Color = "black",
+                },
+                AxisAlignment = AxisAlignment.Left,
+                AutoRange = AutoRange.Always,
+                LabelFormat = NumericFormat.Decimal,
+                MajorGridLineStyle = new Styles.MajorGridLineStyle()
+                {
+                    StrokeThickness = 0
+                },
+                MinorGridLineStyle = new Styles.MinorGridLineStyle()
+                {
+                    StrokeThickness = 0
+                },
+                AxisBorder = new Styles.AxisBorder() { BorderRight = 2 }
+            };
+
+            //currently have to do seperately
+            await _chartBuilder.AddAxis(XAxis, AxisType.X);
+            await _chartBuilder.AddAxis(YAxis, AxisType.Y);
+        }
+
+
+
+    }
+}
