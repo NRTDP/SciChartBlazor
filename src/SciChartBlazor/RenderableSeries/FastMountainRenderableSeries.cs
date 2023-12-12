@@ -10,7 +10,7 @@ namespace SciChartBlazor.RenderableSeries;
 /// <typeparam name="TX">The type of the x.</typeparam>
 /// <typeparam name="TY">The type of the y.</typeparam>
 /// <seealso cref="SciChartBlazor.RenderableSeries.RenderableSeriesBase" />
-public class FastMountainRenderableSeries<TX, TY> : RenderableSeriesBase
+public class FastMountainRenderableSeries<TX, TY> : LineRenderableSeriesBase
 {
     /// <summary>
     /// The type of the element. Usually the name of the element in JS.

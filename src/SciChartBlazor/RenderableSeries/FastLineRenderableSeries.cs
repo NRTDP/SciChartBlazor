@@ -8,7 +8,7 @@ namespace SciChartBlazor.RenderableSeries;
 /// <typeparam name="TX">The type of the x.</typeparam>
 /// <typeparam name="TY">The type of the y.</typeparam>
 /// <seealso cref="SciChartBlazor.RenderableSeries.RenderableSeriesBase" />
-public class FastLineRenderableSeries<TX, TY> : RenderableSeriesBase
+public class FastLineRenderableSeries<TX, TY> : LineRenderableSeriesBase
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="FastLineRenderableSeries{TX, TY}"/> class.
