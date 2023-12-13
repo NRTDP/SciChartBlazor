@@ -118,22 +118,46 @@ public class SciChartBuilder : IDisposable
     public async Task AddModifiers(IEnumerable<ModifierBase> modifiers)
     {
         foreach (var modifier in modifiers)
-            await _jsRuntime.InvokeVoidAsync("sciChartBlazorJson.addModifiers", _chart, modifier.GetJson());    
+        {
+            var ids = await _jsRuntime.InvokeAsync<string[]>("sciChartBlazorJson.addModifiers", _chart,
+                modifier.GetJson());
+            modifier.Id = ids.First();
+        }
     }
+    
+    /// <summary>
+    /// Set modifier isEnabled value to given value.
+    /// </summary>
+    /// <param name="modifierBase">Modifier to be altered.</param>
+    /// <param name="isEnabled">Value to be set.</param>
+    public async Task SetModifierEnabled(ModifierBase modifierBase, bool isEnabled)
+     => await _jsRuntime.InvokeVoidAsync("sciChartBlazorJson.setModifierEnabled", _chart, modifierBase.Id, isEnabled);
+    
+
+    /// <summary>
+    /// Reverse the boolean value of isEnabled of given modifier.
+    /// </summary>
+    /// <param name="modifierBase">Modifier to be altered.</param>
+    public async Task ToggleModifierEnabled(ModifierBase modifierBase)
+        => await _jsRuntime.InvokeVoidAsync("sciChartBlazorJson.toggleModifierEnabled", _chart, modifierBase.Id);
+    
     /// <summary>
     /// Clear all modifiers.
     /// </summary>
     /// <returns></returns>
     public async Task ClearModifiers() => 
         await _jsRuntime.InvokeVoidAsync("sciChartBlazorJson.clearModifiers", _chart);
-     
+
     /// <summary>
     /// Add a single chart modifier.
     /// </summary>
     /// <param name="modifier"></param>
     /// <returns></returns>
-    public async Task AddModifier(ModifierBase modifier) => 
-        await _jsRuntime.InvokeVoidAsync("sciChartBlazorJson.addModifiers", _chart, modifier.GetJson());
+    public async Task AddModifier(ModifierBase modifier)
+    {
+        var ids = await _jsRuntime.InvokeAsync<string[]>("sciChartBlazorJson.addModifiers", _chart, modifier.GetJson());
+        modifier.Id = ids.First();
+    }
 
     /// <summary>
     /// Add multiple RenderableSeries.
