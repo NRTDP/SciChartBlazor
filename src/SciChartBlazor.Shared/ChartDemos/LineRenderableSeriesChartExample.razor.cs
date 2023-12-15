@@ -27,6 +27,8 @@ namespace SciChartBlazor.Shared.ChartDemos
 
         SciChartBuilder _chartBuilder = default!;
 
+        private CursorModifier _cursorModifier = default!;
+
 
         [Inject] IJSRuntime JSRuntime { get; set; } = default!;
         [Inject] ISciChartBlazorService sciChartBlazorService { get; set; } = default!;
@@ -47,6 +49,7 @@ namespace SciChartBlazor.Shared.ChartDemos
                 await CreateAxis();
                 await LoadData();
                 await LoadAlternativeData();
+                await _chartBuilder.SetModifierEnabled(_cursorModifier, false);
             }
 
             await base.OnAfterRenderAsync(firstRender);
@@ -103,6 +106,7 @@ namespace SciChartBlazor.Shared.ChartDemos
 
         private async Task AddModifiers()
         {
+            _cursorModifier = new CursorModifier();
             List<ModifierBase> modifiers = new()
             {
                 new SciChartBlazor.Modifiers.RubberBandXyZoomModifier
@@ -120,7 +124,8 @@ namespace SciChartBlazor.Shared.ChartDemos
                     AnimationDuration = 400
                 },
                 new MouseWheelZoomModifier(),
-                new ZoomPanModifier() { ExecuteOn = ExecuteOn.MouseMiddleButton }
+                new ZoomPanModifier() { ExecuteOn = ExecuteOn.MouseMiddleButton },
+                _cursorModifier
             };
 
             await _chartBuilder.AddModifiers(modifiers);
@@ -174,6 +179,11 @@ namespace SciChartBlazor.Shared.ChartDemos
             //currently have to do seperately
             await _chartBuilder.AddAxis(XAxis, AxisType.X);
             await _chartBuilder.AddAxis(YAxis, AxisType.Y);
+        }
+
+        private async void ToggleCursorModifier()
+        {
+           await _chartBuilder.ToggleModifierEnabled(_cursorModifier);
         }
 
 

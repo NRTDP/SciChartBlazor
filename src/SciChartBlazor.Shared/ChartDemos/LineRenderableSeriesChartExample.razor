@@ -1,6 +1,11 @@
 ﻿@page "/LineRenderableSeriesChartExample";
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 
+<button @onclick="@ToggleCursorModifier" aria-label="Toggle cursor modifier">
+    <span class="material-icons">
+        mouse
+    </span>
+</button>
 
-<div id="@Id" @ref="_chart" style="height:600px" />
-
-
+<div id="@Id" @ref="_chart" style="height:600px"/>

@@ -107,6 +107,18 @@ export async function removeAnnotation(element, id) {
     sciChartSurface.annotations.remove(item);
 }
 
+export async function setModifierEnabled(element, id, isEnabled) {
+    const { sciChartSurface, wasmContext } = resolveContext(element);
+    const item = sciChartSurface.chartModifiers.getById(id);
+    item.isEnabled = isEnabled
+}
+
+export async function toggleModifierEnabled(element, id) {
+    const { sciChartSurface, wasmContext } = resolveContext(element);
+    const item = sciChartSurface.chartModifiers.getById(id);
+    item.isEnabled = !item.isEnabled
+}
+
 export async function removeSeries(element, id) {
     const { sciChartSurface, wasmContext } = resolveContext(element);
     var item = sciChartSurface.renderableSeries.getById(id);
@@ -177,6 +189,10 @@ export async function addModifiers(element, jsonString) {
     const { sciChartSurface, wasmContext } = resolveContext(element);
     const mod = chartBuilder.buildModifiers(jsonString);
     sciChartSurface.chartModifiers.add(...mod);
+
+    return mod.map(function (i) {
+        return i.id;
+    })
 }
 
 export async function addSeries(element, jsonString) {
