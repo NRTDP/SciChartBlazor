@@ -87,6 +87,7 @@ namespace SciChartBlazor.Shared.ChartDemos
             _cursorModifier = new CursorModifier();
             List<ModifierBase> modifiers = new()
             {
+                new LegendModifier {Orientation = LegendOrientation.Horizontal, ShowCheckboxes = true},
                 new SciChartBlazor.Modifiers.RubberBandXyZoomModifier
                 {
                     IsAnimated = true,

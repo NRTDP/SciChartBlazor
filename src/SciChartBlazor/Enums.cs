@@ -225,3 +225,9 @@ public enum AxisType
     X,
     Y  
 }
+
+public enum LegendOrientation
+{
+    Vertical = 0,
+    Horizontal = 1
+}
