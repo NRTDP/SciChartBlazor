@@ -160,7 +160,6 @@ function parseFloat64Array(array) {
 }
 
 
-
 function getArrayDataPointer(e) {
     return e + 12;
 }
@@ -241,6 +240,11 @@ export function addCustomEventListener(dotNetObjectRef, name) {
     document.addEventListener(name, (event) => {
         dotNetObjectRef.invokeMethodAsync('OnCustomEvent', event.detail)
     });
+}
+
+export async function unregister(element) {
+    const { sciChartSurface, wasmContext } = resolveContext(element);
+    sciChartSurface.delete();
 }
 
 export async function test(element) {

@@ -186,9 +186,9 @@ namespace SciChartBlazor.Shared.ChartDemos
            await _chartBuilder.ToggleModifierEnabled(_cursorModifier);
         }
 
-
-    
-
-
-}
+        private async void Dispose()
+        {
+            await _chartBuilder.DisposeAsync();
+        }
+    }
 }
