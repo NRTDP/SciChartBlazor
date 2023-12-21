@@ -10,7 +10,7 @@ namespace SciChartBlazor.RenderableSeries;
 /// <typeparam name="TY1">The type of the y1.</typeparam>
 /// <typeparam name="TY2">The type of the y2.</typeparam>
 /// <seealso cref="SciChartBlazor.RenderableSeries.RenderableSeriesBase" />
-public class SplineBandRenderableSeries<TX, TY1, TY2> : RenderableSeriesBase
+public class SplineBandRenderableSeries<TX, TY1, TY2> : LineRenderableSeriesBase
 {
     /// <summary>
     /// The type of the element. Usually the name of the element in JS.

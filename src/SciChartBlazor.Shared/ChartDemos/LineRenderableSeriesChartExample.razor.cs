@@ -48,6 +48,7 @@ namespace SciChartBlazor.Shared.ChartDemos
                 await AddModifiers();
                 await CreateAxis();
                 await LoadData();
+                await LoadAlternativeData();
                 await _chartBuilder.SetModifierEnabled(_cursorModifier, false);
             }
 
@@ -77,6 +78,27 @@ namespace SciChartBlazor.Shared.ChartDemos
                    Intensity = 1,
                     Offset = new Point(5, 5)
                  }
+            };
+
+            await _chartBuilder.AddSeries(series);
+        }
+        
+        private async Task LoadAlternativeData()
+        {
+            var x = new double[1000];
+            var y = new double[1000];
+
+            for (var i = 0; i < 1000; i++)
+            {
+                x[i] = i+10;
+                y[i] = Math.Sin(i * 0.2) * 100;
+            }
+
+            XyDataSeries<double, double> dataSeries = new(x, y) { DataSeriesName = "Alternative Data", ContainsNaN = false, DataIsSortedInX = true };
+            FastLineRenderableSeries<double, double> series = new(dataSeries)
+            {
+                StrokeThickness = 1,
+                StrokeDashArray = new double[]{10, 3}
             };
 
             await _chartBuilder.AddSeries(series);
