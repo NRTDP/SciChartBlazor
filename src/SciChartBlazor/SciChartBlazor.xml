@@ -613,6 +613,11 @@
             The is inner axis.
             </value>
         </member>
+        <member name="P:SciChartBlazor.Axes.AxisBase.FlippedCoordinates">
+            <summary>
+            Gets or sets flipped cordinates.
+            </summary>
+        </member>
         <member name="T:SciChartBlazor.Axes.CategoryAxis">
             <summary>
             
@@ -1926,6 +1931,17 @@
             </summary>
             <param name="dataSeries">The data series.</param>
         </member>
+        <member name="T:SciChartBlazor.RenderableSeries.LineRenderableSeriesBase">
+            <summary>
+            The Base class for a line-based series.
+            <seealso cref="T:SciChartBlazor.RenderableSeries.RenderableSeriesBase" />
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.RenderableSeries.LineRenderableSeriesBase.StrokeDashArray">
+            <summary>
+            A StrokeDashArray is an array which defines a dot-dash pattern.
+            </summary>
+        </member>
         <member name="T:SciChartBlazor.RenderableSeries.RenderableSeriesBase">
             <summary>
             The Base class for a series.
@@ -2433,6 +2449,19 @@
             </summary>
             <param name="modifiers"></param>
             <returns></returns>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.SetModifierEnabled(SciChartBlazor.Modifiers.ModifierBase,System.Boolean)">
+            <summary>
+            Set modifier isEnabled value to given value.
+            </summary>
+            <param name="modifierBase">Modifier to be altered.</param>
+            <param name="isEnabled">Value to be set.</param>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.ToggleModifierEnabled(SciChartBlazor.Modifiers.ModifierBase)">
+            <summary>
+            Reverse the boolean value of isEnabled of given modifier.
+            </summary>
+            <param name="modifierBase">Modifier to be altered.</param>
         </member>
         <member name="M:SciChartBlazor.SciChartBuilder.ClearModifiers">
             <summary>
