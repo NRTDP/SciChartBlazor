@@ -27,6 +27,7 @@ public class LegendModifier : ModifierBase
     /// <summary>
     /// Sets the initial orientation of the legend.
     /// </summary>
+    [PureIntEnum]
     public LegendOrientation? Orientation { get; set; }
     
     /// <summary>
