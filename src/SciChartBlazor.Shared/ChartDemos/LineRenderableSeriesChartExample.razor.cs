@@ -28,6 +28,8 @@ namespace SciChartBlazor.Shared.ChartDemos
         SciChartBuilder _chartBuilder = default!;
 
         private CursorModifier _cursorModifier = default!;
+        private LegendModifier _legendModifier = default!;
+        private FastLineRenderableSeries<double, double> _alternativeSeries = default!;
 
 
         [Inject] IJSRuntime JSRuntime { get; set; } = default!;
@@ -95,21 +97,23 @@ namespace SciChartBlazor.Shared.ChartDemos
             }
 
             XyDataSeries<double, double> dataSeries = new(x, y) { DataSeriesName = "Alternative Data", ContainsNaN = false, DataIsSortedInX = true };
-            FastLineRenderableSeries<double, double> series = new(dataSeries)
+            _alternativeSeries = new(dataSeries)
             {
                 StrokeThickness = 1,
                 StrokeDashArray = new double[]{10, 3}
             };
 
-            await _chartBuilder.AddSeries(series);
+            await _chartBuilder.AddSeries(_alternativeSeries);
         }
 
         private async Task AddModifiers()
         {
             _cursorModifier = new CursorModifier();
+            _legendModifier = new LegendModifier { Orientation = LegendOrientation.Horizontal, ShowCheckboxes = true };
+
             List<ModifierBase> modifiers = new()
             {
-                new LegendModifier {Orientation = LegendOrientation.Horizontal, ShowCheckboxes = true},
+                _legendModifier,
                 new SciChartBlazor.Modifiers.RubberBandXyZoomModifier
                 {
                     IsAnimated = true,
@@ -190,6 +194,11 @@ namespace SciChartBlazor.Shared.ChartDemos
         private async void Dispose()
         {
             await _chartBuilder.DisposeAsync();
+        }
+
+        private async void HideSeries()
+        {
+            await _chartBuilder.IncludeSeries(_legendModifier.Id, _alternativeSeries.Id, false);
         }
     }
 }
