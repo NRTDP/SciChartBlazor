@@ -632,6 +632,18 @@
             The type.
             </value>
         </member>
+        <member name="T:SciChartBlazor.Axes.DateTimeNumericAxis">
+            <summary>
+            Numeric Axis which by default uses a LabelProvider of type SmartDateLabelProvider
+            </summary>
+            <seealso cref="T:SciChartBlazor.Axes.AxisBase" />
+        </member>
+        <member name="P:SciChartBlazor.Axes.DateTimeNumericAxis.Type">
+            <summary>
+            The type of the element. Usually the name of the element in JS.
+            </summary>
+            <value>The type.</value>
+        </member>
         <member name="T:SciChartBlazor.Axes.LogarithmicAxis">
             <summary>
             
@@ -1142,6 +1154,26 @@
             <value>
             The type.
             </value>
+        </member>
+        <member name="P:SciChartBlazor.Modifiers.LegendModifier.ShowCheckboxes">
+            <summary>
+            Sets whether the legend has visibility checkboxes in it or not.
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.Modifiers.LegendModifier.ShowSeriesMarkers">
+            <summary>
+            Sets whether Series markers are visible or not.
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.Modifiers.LegendModifier.Orientation">
+            <summary>
+            Sets the initial orientation of the legend.
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.Modifiers.LegendModifier.PlacementDivId">
+            <summary>
+            The parent div element Id or reference, the Legend will be appended to this element.
+            </summary>
         </member>
         <member name="T:SciChartBlazor.Modifiers.ModifierBase">
             <summary>
