@@ -215,9 +215,9 @@ public enum NumericFormat
 /// </summary>
 public enum DataSeriesType
 {
-    XyData,
-    XyyData,
-    XyzData
+    Xy,
+    Xyy,
+    Xyz
 }
 
 public enum AxisType

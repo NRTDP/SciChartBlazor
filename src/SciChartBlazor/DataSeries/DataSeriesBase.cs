@@ -44,20 +44,23 @@ public abstract class DataSeriesBase
 
         switch (typeAttribute?.GetDataType())
         {
-            case DataSeriesType.XyData:
-                {
-                    output.XyData = (DataSeriesBase)this;
+            case DataSeriesType.Xy:
+				{
+					output.Type = DataSeriesType.Xy;
+					output.Options = (DataSeriesBase)this;
                     break;
                 }
-            case DataSeriesType.XyyData:
+            case DataSeriesType.Xyy:
                 {
-                    output.XyyData = (DataSeriesBase)this;
-                    break;
+					output.Type = DataSeriesType.Xyy;
+					output.Options = (DataSeriesBase)this;
+					break;
                 }
-            case DataSeriesType.XyzData:
+            case DataSeriesType.Xyz:
                 {
-                    output.XyzData = (DataSeriesBase)this;
-                    break;
+					output.Type = DataSeriesType.Xyz;
+					output.Options = (DataSeriesBase)this;
+					break;
                 }
         }
 
@@ -74,10 +77,7 @@ public abstract class DataSeriesBase
     [Serializable]
     private class jsonObject
     {
-        public DataSeriesBase? XyData { get; set; } = null;
-
-        public DataSeriesBase? XyyData { get; set; } = null;
-
-        public DataSeriesBase? XyzData { get; set; } = null;
+	    public DataSeriesType? Type { get; set; } = null;
+        public DataSeriesBase? Options { get; set; } = null;
     }
 }

@@ -52,7 +52,7 @@ public class SplineBandRenderableSeries<TX, TY1, TY2> : LineRenderableSeriesBase
     /// <value>
     /// The data series.
     /// </value>
-    [SciChartDataSeries(DataSeriesType.XyyData)]
+    [SciChartDataSeries(DataSeriesType.Xyy)]
     public override DataSeriesBase DataSeries { get; }
 
     /// <summary>
