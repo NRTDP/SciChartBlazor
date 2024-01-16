@@ -2435,6 +2435,13 @@
             <param name="end"></param>
             <returns></returns>
         </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.SetYAxisVisibleRange(SciChartBlazor.Axes.SciChartNumberRange)">
+            <summary>
+            Set the visible range of the first YAxis
+            </summary>
+            <param name="range"></param>
+            <returns></returns>
+        </member>
         <member name="M:SciChartBlazor.SciChartBuilder.AddAxis(SciChartBlazor.Axes.AxisBase,SciChartBlazor.AxisType)">
             <summary>
             Add an Axis.
