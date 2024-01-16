@@ -94,14 +94,22 @@ public class SciChartBuilder : IDisposable
     /// <returns></returns>
     public async Task ZoomTo(double start, double end) =>
         await _jsRuntime.InvokeVoidAsync("sciChartBlazorJson.zoomTo", _chart, start, end);
-    
+
     /// <summary>
-    /// Add an Axis.
+    /// Set the visible range of the first YAxis
     /// </summary>
-    /// <param name="Axis"></param>
-    /// <param name="axisType">X or Y axis</param>
+    /// <param name="range"></param>
     /// <returns></returns>
-    public async Task AddAxis(AxisBase Axis, AxisType axisType)
+    public async Task SetYAxisVisibleRange(SciChartNumberRange range) => 
+		await _jsRuntime.InvokeVoidAsync("sciChartBlazorJson.setYAxisVisibleRange", _chart, range.Min, range.Max);
+
+	/// <summary>
+	/// Add an Axis.
+	/// </summary>
+	/// <param name="Axis"></param>
+	/// <param name="axisType">X or Y axis</param>
+	/// <returns></returns>
+	public async Task AddAxis(AxisBase Axis, AxisType axisType)
     {
         //Console.WriteLine(Axis.GetJson());
 

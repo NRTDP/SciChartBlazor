@@ -19,13 +19,11 @@ import {
 } from "scichart";
 
 
-
 let chartInstances = {};
 
 function resolveContext(element) {
     return chartInstances.hasOwnProperty(element.id) && chartInstances[element.id];
 }
-
 
 export async function setLicenseKey(key) {
 
@@ -87,6 +85,14 @@ export async function zoomTo(element, start, end) {
     var coordend = coordCalc.getCoordinate(end);
 
     xAxis.zoom(coordStart, coordend);
+}
+
+export async function setYAxisVisibleRange(element, min, max) {
+    const { sciChartSurface, wasmContext } = resolveContext(element);
+
+    var yAxis = sciChartSurface.yAxes.get(0);
+
+    yAxis.visibleRange = new NumberRange(min, max);
 }
 
 export async function addYAxis(element, jsonString) {
@@ -167,7 +173,6 @@ function parseFloat64Array(array) {
     return new Float64Array(array8.buffer, array8.byteOffset, array8.byteLength / 8);
 }
 
-
 function getArrayDataPointer(e) {
     return e + 12;
 }
@@ -207,7 +212,7 @@ export async function addSeries(element, jsonString) {
     const seriesArray = chartBuilder.buildSeries(wasmContext, jsonString);
 
     sciChartSurface.renderableSeries.add(...seriesArray);
-    sciChartSurface.zoomExtents();
+    //sciChartSurface.zoomExtents();
 
     var ids = seriesArray.map(function (i) {
         return i.id;
