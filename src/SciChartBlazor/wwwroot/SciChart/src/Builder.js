@@ -125,6 +125,14 @@ export async function removeSeries(element, id) {
     sciChartSurface.renderableSeries.remove(item);
 }
 
+export async function includeSeries(element, modifierId, seriesId, isIncluded) {
+    const { sciChartSurface, wasmContext } = resolveContext(element);
+    const legendModifier = sciChartSurface.chartModifiers.getById(modifierId);
+    const series = sciChartSurface.renderableSeries.getById(seriesId);
+    
+    legendModifier.includeSeries(series, isIncluded);
+}
+
 export async function updateSeries(element, id, data) {
     const { sciChartSurface, wasmContext } = resolveContext(element);
 

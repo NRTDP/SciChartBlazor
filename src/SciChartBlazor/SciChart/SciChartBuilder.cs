@@ -360,6 +360,15 @@ public class SciChartBuilder : IDisposable
     /// </summary>
     public void Dispose() =>
         _jsRuntime.InvokeVoidAsync("sciChartBlazorJson.unregister", _chart);
+
+    /// <summary>
+    /// Mark if the Series should be included or excluded in the legend modifier.
+    /// </summary>
+    /// <param name="legendModifierId">Legend modifier id.</param>
+    /// <param name="seriesId">Series id.</param>
+    /// <param name="isIncluded">Included in legend.</param>
+    public async Task IncludeSeries(string legendModifierId, string seriesId, bool isIncluded) =>
+        await _jsRuntime.InvokeVoidAsync("sciChartBlazorJson.includeSeries", _chart, legendModifierId, seriesId, isIncluded);
     
     
 [StructLayout(LayoutKind.Explicit)]
