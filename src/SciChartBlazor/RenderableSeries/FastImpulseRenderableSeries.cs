@@ -34,7 +34,7 @@ public class FastImpulseRenderableSeries<TX, TY> : RenderableSeriesBase
     /// <value>
     /// The data series.
     /// </value>
-    [SciChartDataSeries(DataSeriesType.XyData)]
+    [SciChartDataSeries(DataSeriesType.Xy)]
     public override DataSeriesBase DataSeries { get; }
 
     /// <summary>
