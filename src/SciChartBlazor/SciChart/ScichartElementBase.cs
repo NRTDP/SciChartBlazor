@@ -125,17 +125,17 @@ public abstract class SciChartElementBase
                             output.Options.Add(ConvertToCamelCase(property.Name), (int)value);
                             break;
                         }
-                    case DataSeriesType.XyData:
+                    case DataSeriesType.Xy:
                         {
                             output.XyData = (DataSeriesBase)value;
                             break;
                         }
-                    case DataSeriesType.XyyData:
+                    case DataSeriesType.Xyy:
                         {
                             output.XyyData = (DataSeriesBase)value;
                             break;
                         }
-                    case DataSeriesType.XyzData:
+                    case DataSeriesType.Xyz:
                         {
                             output.XyzData = (DataSeriesBase)value;
                             break;

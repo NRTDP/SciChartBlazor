@@ -26,7 +26,7 @@ public class FastBubbleRenderableSeries<TX, TY, TZ> : RenderableSeriesBase
     /// <value>
     /// The data series.
     /// </value>
-    [SciChartDataSeries(DataSeriesType.XyzData)]
+    [SciChartDataSeries(DataSeriesType.Xyz)]
     public override DataSeriesBase DataSeries { get; }
 
     /// <summary>

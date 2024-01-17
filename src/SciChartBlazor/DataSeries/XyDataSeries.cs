@@ -6,7 +6,7 @@
 /// <typeparam name="TX">The type of the x.</typeparam>
 /// <typeparam name="TY">The type of the y.</typeparam>
 /// <seealso cref="SciChartBlazor.DataSeries.DataSeriesBase" />
-[SciChartDataSeries(DataSeriesType.XyData)]
+[SciChartDataSeries(DataSeriesType.Xy)]
 public class XyDataSeries<TX,TY> : DataSeriesBase
 {
     /// <summary>

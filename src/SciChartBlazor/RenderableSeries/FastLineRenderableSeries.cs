@@ -35,6 +35,6 @@ public class FastLineRenderableSeries<TX, TY> : LineRenderableSeriesBase
     /// <value>
     /// The data series.
     /// </value>
-    [SciChartDataSeries(DataSeriesType.XyData)]
+    [SciChartDataSeries(DataSeriesType.Xy)]
     public override DataSeriesBase DataSeries { get; }
 }

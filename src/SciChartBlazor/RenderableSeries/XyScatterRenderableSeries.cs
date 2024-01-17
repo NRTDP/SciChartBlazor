@@ -18,7 +18,7 @@ public class XyScatterRenderableSeries<TX, TY> : RenderableSeriesBase
 
     /// <summary>Gets the data series.</summary>
     /// <value>The data series.</value>
-    [SciChartDataSeries(DataSeriesType.XyData)]
+    [SciChartDataSeries(DataSeriesType.Xy)]
     public override DataSeriesBase DataSeries { get; }
 
     /// <summary>Initializes a new instance of the <see cref="XyScatterRenderableSeries{TX, TY}" /> class.</summary>
