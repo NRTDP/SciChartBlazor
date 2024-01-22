@@ -217,7 +217,8 @@ public enum DataSeriesType
 {
     Xy,
     Xyy,
-    Xyz
+    Xyz,
+    Stacked
 }
 
 public enum AxisType

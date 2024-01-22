@@ -8,8 +8,8 @@ namespace SciChartBlazor.RenderableSeries;
 /// </summary>
 /// <typeparam name="TX">The type of the x.</typeparam>
 /// <typeparam name="TY">The type of the y.</typeparam>
-/// <seealso cref="SciChartBlazor.RenderableSeries.RenderableSeriesBase" />
-public class StackedColumnRenderableSeries<TX, TY> : RenderableSeriesBase
+/// <seealso cref="SciChartBlazor.RenderableSeries.StackedRenderableSeriesBase" />
+public class StackedColumnRenderableSeries<TX, TY> : StackedRenderableSeriesBase
 {
     /// <summary>
     /// The type of the element. Usually the name of the element in JS.
@@ -21,15 +21,6 @@ public class StackedColumnRenderableSeries<TX, TY> : RenderableSeriesBase
     public override string Type => "StackedColumnSeries";
 
     /// <summary>
-    /// Gets or sets the stacked group identifier.
-    /// </summary>
-    /// <value>
-    /// The stacked group identifier.
-    /// </value>
-    public string? StackedGroupId { get; set; }
-
-
-    /// <summary>
     /// Gets the data series.
     /// </summary>
     /// <value>
@@ -39,10 +30,18 @@ public class StackedColumnRenderableSeries<TX, TY> : RenderableSeriesBase
     public override DataSeriesBase DataSeries { get; }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="StackedColumnRenderableSeries{TX, TY}"/> class.
+    /// Gets or sets the fill.
     /// </summary>
-    /// <param name="dataSeries">The data series.</param>
-    public StackedColumnRenderableSeries(XyDataSeries<TX, TY> dataSeries)
+    /// <value>
+    /// The fill.
+    /// </value>
+    public string? Fill { get; set; }
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="StackedColumnRenderableSeries{TX,TY}"/> class.
+	/// </summary>
+	/// <param name="dataSeries">The data series.</param>
+	public StackedColumnRenderableSeries(XyDataSeries<TX, TY> dataSeries)
     {
         DataSeries = dataSeries;
     }

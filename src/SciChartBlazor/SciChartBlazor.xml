@@ -786,6 +786,38 @@
             <param name="lowValues">The low values.</param>
             <param name="closeValues">The close values.</param>
         </member>
+        <member name="T:SciChartBlazor.DataSeries.StackedColumnCollection">
+            <summary>
+            A collection of StackedSeriesBase
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.DataSeries.StackedColumnCollection.Type">
+            <summary>
+            The type of the element. Usually the name of the element in JS.
+            </summary>
+            <value>
+            The type.
+            </value>
+        </member>
+        <member name="P:SciChartBlazor.DataSeries.StackedColumnCollection.DataSeries">
+            <summary>
+            Gets the data series.
+            </summary>
+            <value>
+            The data series.
+            </value>
+        </member>
+        <member name="M:SciChartBlazor.DataSeries.StackedColumnCollection.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SciChartBlazor.DataSeries.StackedColumnCollection"/> class.
+            </summary>
+        </member>
+        <member name="M:SciChartBlazor.DataSeries.StackedColumnCollection.#ctor(System.Collections.Generic.ICollection{SciChartBlazor.RenderableSeries.StackedSeriesBase})">
+            <summary>
+            Initializes a new instance of the <see cref="T:SciChartBlazor.DataSeries.StackedColumnCollection"/> class.
+            </summary>
+            <param name="series">The stacked series.</param>
+        </member>
         <member name="T:SciChartBlazor.DataSeries.UniformHeatmapDataSeries`3">
             <summary>
             
@@ -1588,7 +1620,7 @@
             <typeparam name="TX">The type of the x.</typeparam>
             <typeparam name="TY1">The type of the y1.</typeparam>
             <typeparam name="TY2">The type of the y2.</typeparam>
-            <seealso cref="T:SciChartBlazor.RenderableSeries.RenderableSeriesBase" />
+            <seealso cref="T:SciChartBlazor.RenderableSeries.RenderableSingleSeriesBase" />
         </member>
         <member name="P:SciChartBlazor.RenderableSeries.FastBandRenderableSeries`3.Type">
             <summary>
@@ -1643,7 +1675,7 @@
             <typeparam name="TX">The type of the x.</typeparam>
             <typeparam name="TY">The type of the y.</typeparam>
             <typeparam name="TZ">The type of the z.</typeparam>
-            <seealso cref="T:SciChartBlazor.RenderableSeries.RenderableSeriesBase" />
+            <seealso cref="T:SciChartBlazor.RenderableSeries.RenderableSingleSeriesBase" />
         </member>
         <member name="P:SciChartBlazor.RenderableSeries.FastBubbleRenderableSeries`3.Type">
             <summary>
@@ -1675,7 +1707,7 @@
             <typeparam name="THigh">The type of the high.</typeparam>
             <typeparam name="TLow">The type of the low.</typeparam>
             <typeparam name="TClose">The type of the close.</typeparam>
-            <seealso cref="T:SciChartBlazor.RenderableSeries.RenderableSeriesBase" />
+            <seealso cref="T:SciChartBlazor.RenderableSeries.RenderableSingleSeriesBase" />
         </member>
         <member name="P:SciChartBlazor.RenderableSeries.FastCandlestickRenderableSeries`4.Type">
             <summary>
@@ -1745,7 +1777,7 @@
             </summary>
             <typeparam name="TX">The type of the x.</typeparam>
             <typeparam name="TY">The type of the y.</typeparam>
-            <seealso cref="T:SciChartBlazor.RenderableSeries.RenderableSeriesBase" />
+            <seealso cref="T:SciChartBlazor.RenderableSeries.RenderableSingleSeriesBase" />
         </member>
         <member name="P:SciChartBlazor.RenderableSeries.FastColumnRenderableSeries`2.Type">
             <summary>
@@ -1785,13 +1817,29 @@
             The fill.
             </value>
         </member>
+        <member name="P:SciChartBlazor.RenderableSeries.FastColumnRenderableSeries`2.CornerRadius">
+            <summary>
+            Gets or sets the cornerRadius.
+            </summary>
+            <value>
+            The cornerRadius.
+            </value>
+        </member>
+        <member name="P:SciChartBlazor.RenderableSeries.FastColumnRenderableSeries`2.DataLabels">
+            <summary>
+            Gets or set the dataLabels
+            </summary>
+            <value>
+            The dataLabels.
+            </value>
+        </member>
         <member name="T:SciChartBlazor.RenderableSeries.FastImpulseRenderableSeries`2">
             <summary>
             A Fast Impulse Series.
             </summary>
             <typeparam name="TX">The type of the x.</typeparam>
             <typeparam name="TY">The type of the y.</typeparam>
-            <seealso cref="T:SciChartBlazor.RenderableSeries.RenderableSeriesBase" />
+            <seealso cref="T:SciChartBlazor.RenderableSeries.RenderableSingleSeriesBase" />
         </member>
         <member name="M:SciChartBlazor.RenderableSeries.FastImpulseRenderableSeries`2.#ctor(SciChartBlazor.DataSeries.XyDataSeries{`0,`1})">
             <summary>
@@ -1923,7 +1971,7 @@
             <typeparam name="THigh">The type of the high.</typeparam>
             <typeparam name="TLow">The type of the low.</typeparam>
             <typeparam name="TClose">The type of the close.</typeparam>
-            <seealso cref="T:SciChartBlazor.RenderableSeries.RenderableSeriesBase" />
+            <seealso cref="T:SciChartBlazor.RenderableSeries.RenderableSingleSeriesBase" />
         </member>
         <member name="P:SciChartBlazor.RenderableSeries.FastOhlcRenderableSeries`4.Type">
             <summary>
@@ -1974,19 +2022,25 @@
             A StrokeDashArray is an array which defines a dot-dash pattern.
             </summary>
         </member>
+        <member name="T:SciChartBlazor.RenderableSeries.RenderableCollectionSeriesBase">
+            <summary>
+            The Base class for a collection of series.
+            </summary>
+            <seealso cref="T:SciChartBlazor.RenderableSeries.RenderableSeriesBase" />
+        </member>
+        <member name="P:SciChartBlazor.RenderableSeries.RenderableCollectionSeriesBase.DataSeries">
+            <summary>
+            Gets the collection of data series.
+            </summary>
+            <value>
+            The collection data series.
+            </value>
+        </member>
         <member name="T:SciChartBlazor.RenderableSeries.RenderableSeriesBase">
             <summary>
             The Base class for a series.
             </summary>
             <seealso cref="T:SciChartBlazor.SciChartElementBase" />
-        </member>
-        <member name="P:SciChartBlazor.RenderableSeries.RenderableSeriesBase.DataSeries">
-            <summary>
-            Gets the data series.
-            </summary>
-            <value>
-            The data series.
-            </value>
         </member>
         <member name="P:SciChartBlazor.RenderableSeries.RenderableSeriesBase.DrawNanAs">
             <summary>
@@ -2060,6 +2114,20 @@
             The effect.
             </value>
         </member>
+        <member name="T:SciChartBlazor.RenderableSeries.RenderableSingleSeriesBase">
+            <summary>
+            The Base class for a series.
+            </summary>
+            <seealso cref="T:SciChartBlazor.RenderableSeries.RenderableSeriesBase" />
+        </member>
+        <member name="P:SciChartBlazor.RenderableSeries.RenderableSingleSeriesBase.DataSeries">
+            <summary>
+            Gets the data series.
+            </summary>
+            <value>
+            The data series.
+            </value>
+        </member>
         <member name="T:SciChartBlazor.RenderableSeries.SplineBandRenderableSeries`3">
             <summary>
             A Spline Band Series.
@@ -2067,7 +2135,7 @@
             <typeparam name="TX">The type of the x.</typeparam>
             <typeparam name="TY1">The type of the y1.</typeparam>
             <typeparam name="TY2">The type of the y2.</typeparam>
-            <seealso cref="T:SciChartBlazor.RenderableSeries.RenderableSeriesBase" />
+            <seealso cref="T:SciChartBlazor.RenderableSeries.RenderableSingleSeriesBase" />
         </member>
         <member name="P:SciChartBlazor.RenderableSeries.SplineBandRenderableSeries`3.Type">
             <summary>
@@ -2221,7 +2289,7 @@
             </summary>
             <typeparam name="TX">The type of the x.</typeparam>
             <typeparam name="TY">The type of the y.</typeparam>
-            <seealso cref="T:SciChartBlazor.RenderableSeries.RenderableSeriesBase" />
+            <seealso cref="T:SciChartBlazor.RenderableSeries.StackedSeriesBase" />
         </member>
         <member name="P:SciChartBlazor.RenderableSeries.StackedColumnRenderableSeries`2.Type">
             <summary>
@@ -2231,20 +2299,20 @@
             The type.
             </value>
         </member>
-        <member name="P:SciChartBlazor.RenderableSeries.StackedColumnRenderableSeries`2.StackedGroupId">
-            <summary>
-            Gets or sets the stacked group identifier.
-            </summary>
-            <value>
-            The stacked group identifier.
-            </value>
-        </member>
         <member name="P:SciChartBlazor.RenderableSeries.StackedColumnRenderableSeries`2.DataSeries">
             <summary>
             Gets the data series.
             </summary>
             <value>
             The data series.
+            </value>
+        </member>
+        <member name="P:SciChartBlazor.RenderableSeries.StackedColumnRenderableSeries`2.Fill">
+            <summary>
+            Gets or sets the fill.
+            </summary>
+            <value>
+            The fill.
             </value>
         </member>
         <member name="M:SciChartBlazor.RenderableSeries.StackedColumnRenderableSeries`2.#ctor(SciChartBlazor.DataSeries.XyDataSeries{`0,`1})">
@@ -2259,7 +2327,7 @@
             </summary>
             <typeparam name="TX">The type of the x.</typeparam>
             <typeparam name="TY">The type of the y.</typeparam>
-            <seealso cref="T:SciChartBlazor.RenderableSeries.RenderableSeriesBase" />
+            <seealso cref="T:SciChartBlazor.RenderableSeries.StackedSeriesBase" />
         </member>
         <member name="P:SciChartBlazor.RenderableSeries.StackedMountainRenderableSeries`2.Type">
             <summary>
@@ -2299,6 +2367,19 @@
             </summary>
             <param name="dataSeries">The data series.</param>
         </member>
+        <member name="T:SciChartBlazor.RenderableSeries.StackedSeriesBase">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.RenderableSeries.StackedSeriesBase.StackedGroupId">
+            <summary>
+            Gets or sets the stacked group identifier.
+            </summary>
+            <value>
+            The stacked group identifier.
+            </value>
+        </member>
         <member name="T:SciChartBlazor.RenderableSeries.UniformContoursRenderableSeries`3">
             <summary>
             A Uniform Contour Series.
@@ -2306,7 +2387,7 @@
             <typeparam name="TX">The type of the x.</typeparam>
             <typeparam name="TY">The type of the y.</typeparam>
             <typeparam name="TZ">The type of the z.</typeparam>
-            <seealso cref="T:SciChartBlazor.RenderableSeries.RenderableSeriesBase" />
+            <seealso cref="T:SciChartBlazor.RenderableSeries.RenderableSingleSeriesBase" />
         </member>
         <member name="P:SciChartBlazor.RenderableSeries.UniformContoursRenderableSeries`3.Type">
             <summary>
@@ -2358,7 +2439,7 @@
             </summary>
             <typeparam name="TX">The type of the x.</typeparam>
             <typeparam name="TY">The type of the y.</typeparam>
-            <seealso cref="T:SciChartBlazor.RenderableSeries.RenderableSeriesBase" />
+            <seealso cref="T:SciChartBlazor.RenderableSeries.RenderableSingleSeriesBase" />
         </member>
         <member name="P:SciChartBlazor.RenderableSeries.XyScatterRenderableSeries`2.Type">
             <summary>The type of the element. Usually the name of the element in JS.</summary>
@@ -2796,6 +2877,31 @@
         <member name="T:SciChartBlazor.Styles.AxisTitleStyle">
             <summary>
             The style of the axis title.
+            </summary>
+        </member>
+        <member name="T:SciChartBlazor.Styles.DataLabels">
+            <summary>
+            The data labels.
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.Styles.DataLabels.Style">
+            <summary>
+            The style of the data labels.
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.Styles.DataLabels.HorizontalTextPosition">
+            <summary>
+            Horizontal position of the data labels.
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.Styles.DataLabels.VerticalTextPosition">
+            <summary>
+            Vertical position of the data labels.
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.Styles.DataLabels.Color">
+            <summary>
+            Color of the data labels.
             </summary>
         </member>
         <member name="T:SciChartBlazor.Styles.GradientParams">

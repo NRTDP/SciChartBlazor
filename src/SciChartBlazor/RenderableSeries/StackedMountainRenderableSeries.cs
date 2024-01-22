@@ -8,8 +8,8 @@ namespace SciChartBlazor.RenderableSeries;
 /// </summary>
 /// <typeparam name="TX">The type of the x.</typeparam>
 /// <typeparam name="TY">The type of the y.</typeparam>
-/// <seealso cref="SciChartBlazor.RenderableSeries.RenderableSeriesBase" />
-public class StackedMountainRenderableSeries<TX, TY> : RenderableSeriesBase
+/// <seealso cref="SciChartBlazor.RenderableSeries.StackedRenderableSeriesBase" />
+public class StackedMountainRenderableSeries<TX, TY> : StackedRenderableSeriesBase
 {
     /// <summary>
     /// The type of the element. Usually the name of the element in JS.
@@ -46,7 +46,7 @@ public class StackedMountainRenderableSeries<TX, TY> : RenderableSeriesBase
     public override DataSeriesBase DataSeries { get; }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="StackedMountainRenderableSeries{TX, TY}"/> class.
+    /// Initializes a new instance of the <see cref="StackedMountainRenderableSeries{TX,TY}"/> class.
     /// </summary>
     /// <param name="dataSeries">The data series.</param>
     public StackedMountainRenderableSeries(XyDataSeries<TX, TY> dataSeries)

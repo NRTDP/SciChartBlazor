@@ -49,11 +49,11 @@ public class SciChartBuilder : IDisposable
     public IReadOnlyList<ModifierBase> Modifiers => _modifiers; //not used, maybe should use in the future
 
 
-    private List<RenderableSeriesBase> _renderableSeries = new();
+    private List<SeriesBase> _renderableSeries = new();
     /// <summary>
     /// The current active renderable series.
     /// </summary>
-    public ICollection<RenderableSeriesBase> RenderableSeries => _renderableSeries;
+    public ICollection<SeriesBase> RenderableSeries => _renderableSeries;
 
     /// <summary>
     /// Initialize a chart.
@@ -172,7 +172,7 @@ public class SciChartBuilder : IDisposable
     /// </summary>
     /// <param name="series"></param>
     /// <returns></returns>
-    public async Task AddSeries(IList<RenderableSeriesBase> series)
+    public async Task AddSeries(IList<SeriesBase> series)
     {
         foreach (var single in series)
         {
@@ -191,7 +191,7 @@ public class SciChartBuilder : IDisposable
     /// </summary>
     /// <param name="series"></param>
     /// <returns></returns>
-    public async Task AddSeries(RenderableSeriesBase series)
+    public async Task AddSeries(SeriesBase series)
     {
         string json = series.GetJson();
 
@@ -204,7 +204,7 @@ public class SciChartBuilder : IDisposable
     /// </summary>
     /// <param name="series"></param>
     /// <returns></returns>
-    public async Task AddSeriesUnmarshalled(RenderableSeriesBase series)
+    public async Task AddSeriesUnmarshalled(SeriesBase series)
     {
         await Task.Run(() => 
         { 
@@ -279,9 +279,9 @@ public class SciChartBuilder : IDisposable
     /// <summary>
     /// Remove a RenderableSeries.
     /// </summary>
-    /// <param name="renderableSeries"></param>
+    /// <param name="series"></param>
     /// <returns></returns>
-    public async Task RemoveRenderableSeries(RenderableSeriesBase renderableSeries) => await RemoveRenderableSeries(renderableSeries.Id);
+    public async Task RemoveRenderableSeries(SeriesBase series) => await RemoveRenderableSeries(series.Id);
 
     /// <summary>
     /// Remove a RenderableSeries.
@@ -297,10 +297,10 @@ public class SciChartBuilder : IDisposable
     /// <summary>
     /// Update a renderable series. This is usually faster than creating a new one.
     /// </summary>
-    /// <param name="renderableSeries"></param>
+    /// <param name="series"></param>
     /// <param name="data"></param>
     /// <returns></returns>
-    public async Task UpdateRenderableSeries(RenderableSeriesBase renderableSeries, DataSeriesBase data) => await UpdateRenderableSeries(renderableSeries.Id, data);
+    public async Task UpdateRenderableSeries(SeriesBase series, DataSeriesBase data) => await UpdateRenderableSeries(series.Id, data);
 
     /// <summary>
     /// Update a renderable series. This is usually faster than creating a new one.
@@ -317,11 +317,11 @@ public class SciChartBuilder : IDisposable
     /// <summary>
     /// Update a renderable series without marshalling. Potentially much faster with large datasets. Currently only X,Y dataseries.
     /// </summary>
-    /// <param name="renderableSeries"></param>
+    /// <param name="series"></param>
     /// <param name="X"></param>
     /// <param name="Y"></param>
     /// <returns></returns>
-    public async Task UpdateRenderableSeriesUnmarshalled(RenderableSeriesBase renderableSeries, double[] X, double[] Y)
+    public async Task UpdateRenderableSeriesUnmarshalled(SeriesBase series, double[] X, double[] Y)
     {
         await Task.Run(() => 
         { 
@@ -329,7 +329,7 @@ public class SciChartBuilder : IDisposable
 
         var callResultForBoolean =
             unmarshalledRuntime.InvokeUnmarshalled<UpdateSeriesMetaData,double[],double[], bool>(
-                "sciChartBlazorJson.updateSeriesUnmarshalled", new UpdateSeriesMetaData() { Element= _elementId, SeriesId = renderableSeries.Id }, X, Y );
+                "sciChartBlazorJson.updateSeriesUnmarshalled", new UpdateSeriesMetaData() { Element= _elementId, SeriesId = series.Id }, X, Y );
         });
     }
 
