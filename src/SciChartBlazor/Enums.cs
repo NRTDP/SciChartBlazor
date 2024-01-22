@@ -1,4 +1,4 @@
-﻿namespace SciChartBlazor;
+namespace SciChartBlazor;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 /// <summary>
@@ -217,7 +217,8 @@ public enum DataSeriesType
 {
     XyData,
     XyyData,
-    XyzData
+    XyzData,
+    Stacked
 }
 
 public enum AxisType

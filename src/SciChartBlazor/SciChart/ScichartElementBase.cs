@@ -2,6 +2,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using SciChartBlazor.DataSeries;
+using SciChartBlazor.RenderableSeries;
 
 namespace SciChartBlazor;
 /// <summary>
@@ -140,6 +141,24 @@ public abstract class SciChartElementBase
                             output.XyzData = (DataSeriesBase)value;
                             break;
                         }
+                    case DataSeriesType.Stacked:
+	                    {
+		                    if (value is ICollection<StackedRenderableSeriesBase> seriesCollection)
+		                    {
+			                    output.Series = new List<object>();
+
+			                    foreach (var series in seriesCollection)
+			                    {
+				                    if (series is SciChartElementBase e)
+				                    {
+					                    var thisJson = e.GetJson();
+					                    output.Series.Add(e.GetJsonObject());
+				                    }
+								}
+		                    }
+		                    
+		                    break;
+	                    }
                     case HasOptions:
                         if (output.Options == null) { output.Options = new(); }
                         if (value is SciChartElementBase v)
@@ -208,6 +227,7 @@ public abstract class SciChartElementBase
         public DataSeriesBase? XyData { get; set; } = null;
         public DataSeriesBase? XyyData { get; set; } = null;
         public DataSeriesBase? XyzData { get; set; } = null;
+        public ICollection<object>? Series { get; set; } = null!;
     }
 }
 

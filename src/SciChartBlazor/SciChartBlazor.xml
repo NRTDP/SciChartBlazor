@@ -774,6 +774,38 @@
             <param name="lowValues">The low values.</param>
             <param name="closeValues">The close values.</param>
         </member>
+        <member name="T:SciChartBlazor.DataSeries.StackedColumnCollection">
+            <summary>
+            A collection of StackedSeriesBase
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.DataSeries.StackedColumnCollection.Type">
+            <summary>
+            The type of the element. Usually the name of the element in JS.
+            </summary>
+            <value>
+            The type.
+            </value>
+        </member>
+        <member name="P:SciChartBlazor.DataSeries.StackedColumnCollection.DataSeries">
+            <summary>
+            Gets the data series.
+            </summary>
+            <value>
+            The data series.
+            </value>
+        </member>
+        <member name="M:SciChartBlazor.DataSeries.StackedColumnCollection.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SciChartBlazor.DataSeries.StackedColumnCollection"/> class.
+            </summary>
+        </member>
+        <member name="M:SciChartBlazor.DataSeries.StackedColumnCollection.#ctor(System.Collections.Generic.ICollection{SciChartBlazor.RenderableSeries.StackedRenderableSeriesBase})">
+            <summary>
+            Initializes a new instance of the <see cref="T:SciChartBlazor.DataSeries.StackedColumnCollection"/> class.
+            </summary>
+            <param name="series">The stacked series.</param>
+        </member>
         <member name="T:SciChartBlazor.DataSeries.UniformHeatmapDataSeries`3">
             <summary>
             
@@ -1142,6 +1174,26 @@
             <value>
             The type.
             </value>
+        </member>
+        <member name="P:SciChartBlazor.Modifiers.LegendModifier.ShowCheckboxes">
+            <summary>
+            Sets whether the legend has visibility checkboxes in it or not.
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.Modifiers.LegendModifier.ShowSeriesMarkers">
+            <summary>
+            Sets whether Series markers are visible or not.
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.Modifiers.LegendModifier.Orientation">
+            <summary>
+            Sets the initial orientation of the legend.
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.Modifiers.LegendModifier.PlacementDivId">
+            <summary>
+            The parent div element Id or reference, the Legend will be appended to this element.
+            </summary>
         </member>
         <member name="T:SciChartBlazor.Modifiers.ModifierBase">
             <summary>
@@ -1942,11 +1994,25 @@
             A StrokeDashArray is an array which defines a dot-dash pattern.
             </summary>
         </member>
+        <member name="T:SciChartBlazor.RenderableSeries.RenderableCollectionSeriesBase">
+            <summary>
+            The Base class for a collection of series.
+            </summary>
+            <seealso cref="T:SciChartBlazor.RenderableSeries.SeriesBase" />
+        </member>
+        <member name="P:SciChartBlazor.RenderableSeries.RenderableCollectionSeriesBase.DataSeries">
+            <summary>
+            Gets the collection of data series.
+            </summary>
+            <value>
+            The collection data series.
+            </value>
+        </member>
         <member name="T:SciChartBlazor.RenderableSeries.RenderableSeriesBase">
             <summary>
             The Base class for a series.
             </summary>
-            <seealso cref="T:SciChartBlazor.SciChartElementBase" />
+            <seealso cref="T:SciChartBlazor.RenderableSeries.SeriesBase" />
         </member>
         <member name="P:SciChartBlazor.RenderableSeries.RenderableSeriesBase.DataSeries">
             <summary>
@@ -1956,7 +2022,13 @@
             The data series.
             </value>
         </member>
-        <member name="P:SciChartBlazor.RenderableSeries.RenderableSeriesBase.DrawNanAs">
+        <member name="T:SciChartBlazor.RenderableSeries.SeriesBase">
+            <summary>
+            The Base class for a series.
+            </summary>
+            <seealso cref="T:SciChartBlazor.SciChartElementBase" />
+        </member>
+        <member name="P:SciChartBlazor.RenderableSeries.SeriesBase.DrawNanAs">
             <summary>
             Gets or sets the draw nan as.
             </summary>
@@ -1964,7 +2036,7 @@
             The draw nan as.
             </value>
         </member>
-        <member name="P:SciChartBlazor.RenderableSeries.RenderableSeriesBase.PointMarker">
+        <member name="P:SciChartBlazor.RenderableSeries.SeriesBase.PointMarker">
             <summary>
             Gets or sets the point marker.
             </summary>
@@ -1972,7 +2044,7 @@
             The point marker.
             </value>
         </member>
-        <member name="P:SciChartBlazor.RenderableSeries.RenderableSeriesBase.Stroke">
+        <member name="P:SciChartBlazor.RenderableSeries.SeriesBase.Stroke">
             <summary>
             Gets or sets the stroke.
             </summary>
@@ -1980,7 +2052,7 @@
             The stroke.
             </value>
         </member>
-        <member name="P:SciChartBlazor.RenderableSeries.RenderableSeriesBase.StrokeThickness">
+        <member name="P:SciChartBlazor.RenderableSeries.SeriesBase.StrokeThickness">
             <summary>
             Gets or sets the stroke thickness.
             </summary>
@@ -1988,7 +2060,7 @@
             The stroke thickness.
             </value>
         </member>
-        <member name="P:SciChartBlazor.RenderableSeries.RenderableSeriesBase.Opacity">
+        <member name="P:SciChartBlazor.RenderableSeries.SeriesBase.Opacity">
             <summary>
             Gets or sets the opacity.
             </summary>
@@ -1996,7 +2068,7 @@
             The opacity.
             </value>
         </member>
-        <member name="P:SciChartBlazor.RenderableSeries.RenderableSeriesBase.XAxisId">
+        <member name="P:SciChartBlazor.RenderableSeries.SeriesBase.XAxisId">
             <summary>
             Gets or sets the x axis identifier.
             </summary>
@@ -2004,7 +2076,7 @@
             The x axis identifier.
             </value>
         </member>
-        <member name="P:SciChartBlazor.RenderableSeries.RenderableSeriesBase.YAxisId">
+        <member name="P:SciChartBlazor.RenderableSeries.SeriesBase.YAxisId">
             <summary>
             Gets or sets the y axis identifier.
             </summary>
@@ -2012,7 +2084,7 @@
             The y axis identifier.
             </value>
         </member>
-        <member name="P:SciChartBlazor.RenderableSeries.RenderableSeriesBase.IsVisible">
+        <member name="P:SciChartBlazor.RenderableSeries.SeriesBase.IsVisible">
             <summary>
             Gets or sets the is visible.
             </summary>
@@ -2020,7 +2092,7 @@
             The is visible.
             </value>
         </member>
-        <member name="P:SciChartBlazor.RenderableSeries.RenderableSeriesBase.Effect">
+        <member name="P:SciChartBlazor.RenderableSeries.SeriesBase.Effect">
             <summary>
             Gets or sets the effect.
             </summary>
@@ -2189,7 +2261,7 @@
             </summary>
             <typeparam name="TX">The type of the x.</typeparam>
             <typeparam name="TY">The type of the y.</typeparam>
-            <seealso cref="T:SciChartBlazor.RenderableSeries.RenderableSeriesBase" />
+            <seealso cref="T:SciChartBlazor.RenderableSeries.StackedRenderableSeriesBase" />
         </member>
         <member name="P:SciChartBlazor.RenderableSeries.StackedColumnRenderableSeries`2.Type">
             <summary>
@@ -2199,20 +2271,20 @@
             The type.
             </value>
         </member>
-        <member name="P:SciChartBlazor.RenderableSeries.StackedColumnRenderableSeries`2.StackedGroupId">
-            <summary>
-            Gets or sets the stacked group identifier.
-            </summary>
-            <value>
-            The stacked group identifier.
-            </value>
-        </member>
         <member name="P:SciChartBlazor.RenderableSeries.StackedColumnRenderableSeries`2.DataSeries">
             <summary>
             Gets the data series.
             </summary>
             <value>
             The data series.
+            </value>
+        </member>
+        <member name="P:SciChartBlazor.RenderableSeries.StackedColumnRenderableSeries`2.Fill">
+            <summary>
+            Gets or sets the fill.
+            </summary>
+            <value>
+            The fill.
             </value>
         </member>
         <member name="M:SciChartBlazor.RenderableSeries.StackedColumnRenderableSeries`2.#ctor(SciChartBlazor.DataSeries.XyDataSeries{`0,`1})">
@@ -2227,7 +2299,7 @@
             </summary>
             <typeparam name="TX">The type of the x.</typeparam>
             <typeparam name="TY">The type of the y.</typeparam>
-            <seealso cref="T:SciChartBlazor.RenderableSeries.RenderableSeriesBase" />
+            <seealso cref="T:SciChartBlazor.RenderableSeries.StackedRenderableSeriesBase" />
         </member>
         <member name="P:SciChartBlazor.RenderableSeries.StackedMountainRenderableSeries`2.Type">
             <summary>
@@ -2266,6 +2338,19 @@
             Initializes a new instance of the <see cref="T:SciChartBlazor.RenderableSeries.StackedMountainRenderableSeries`2"/> class.
             </summary>
             <param name="dataSeries">The data series.</param>
+        </member>
+        <member name="T:SciChartBlazor.RenderableSeries.StackedRenderableSeriesBase">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.RenderableSeries.StackedRenderableSeriesBase.StackedGroupId">
+            <summary>
+            Gets or sets the stacked group identifier.
+            </summary>
+            <value>
+            The stacked group identifier.
+            </value>
         </member>
         <member name="T:SciChartBlazor.RenderableSeries.UniformContoursRenderableSeries`3">
             <summary>
@@ -2476,21 +2561,21 @@
             <param name="modifier"></param>
             <returns></returns>
         </member>
-        <member name="M:SciChartBlazor.SciChartBuilder.AddSeries(System.Collections.Generic.IList{SciChartBlazor.RenderableSeries.RenderableSeriesBase})">
+        <member name="M:SciChartBlazor.SciChartBuilder.AddSeries(System.Collections.Generic.IList{SciChartBlazor.RenderableSeries.SeriesBase})">
             <summary>
             Add multiple RenderableSeries.
             </summary>
             <param name="series"></param>
             <returns></returns>
         </member>
-        <member name="M:SciChartBlazor.SciChartBuilder.AddSeries(SciChartBlazor.RenderableSeries.RenderableSeriesBase)">
+        <member name="M:SciChartBlazor.SciChartBuilder.AddSeries(SciChartBlazor.RenderableSeries.SeriesBase)">
             <summary>
             Add a single RenderableSeries.
             </summary>
             <param name="series"></param>
             <returns></returns>
         </member>
-        <member name="M:SciChartBlazor.SciChartBuilder.AddSeriesUnmarshalled(SciChartBlazor.RenderableSeries.RenderableSeriesBase)">
+        <member name="M:SciChartBlazor.SciChartBuilder.AddSeriesUnmarshalled(SciChartBlazor.RenderableSeries.SeriesBase)">
             <summary>
             Add a single RenderableSeries without marshalling. May be faster with large datasets.
             </summary>
@@ -2518,11 +2603,11 @@
             <param name="annotation"></param>
             <returns></returns>
         </member>
-        <member name="M:SciChartBlazor.SciChartBuilder.RemoveRenderableSeries(SciChartBlazor.RenderableSeries.RenderableSeriesBase)">
+        <member name="M:SciChartBlazor.SciChartBuilder.RemoveRenderableSeries(SciChartBlazor.RenderableSeries.SeriesBase)">
             <summary>
             Remove a RenderableSeries.
             </summary>
-            <param name="renderableSeries"></param>
+            <param name="series"></param>
             <returns></returns>
         </member>
         <member name="M:SciChartBlazor.SciChartBuilder.RemoveRenderableSeries(System.String)">
@@ -2532,11 +2617,11 @@
             <param name="renderableSeriesId"></param>
             <returns></returns>
         </member>
-        <member name="M:SciChartBlazor.SciChartBuilder.UpdateRenderableSeries(SciChartBlazor.RenderableSeries.RenderableSeriesBase,SciChartBlazor.DataSeries.DataSeriesBase)">
+        <member name="M:SciChartBlazor.SciChartBuilder.UpdateRenderableSeries(SciChartBlazor.RenderableSeries.SeriesBase,SciChartBlazor.DataSeries.DataSeriesBase)">
             <summary>
             Update a renderable series. This is usually faster than creating a new one.
             </summary>
-            <param name="renderableSeries"></param>
+            <param name="series"></param>
             <param name="data"></param>
             <returns></returns>
         </member>
@@ -2548,11 +2633,11 @@
             <param name="data"></param>
             <returns></returns>
         </member>
-        <member name="M:SciChartBlazor.SciChartBuilder.UpdateRenderableSeriesUnmarshalled(SciChartBlazor.RenderableSeries.RenderableSeriesBase,System.Double[],System.Double[])">
+        <member name="M:SciChartBlazor.SciChartBuilder.UpdateRenderableSeriesUnmarshalled(SciChartBlazor.RenderableSeries.SeriesBase,System.Double[],System.Double[])">
             <summary>
             Update a renderable series without marshalling. Potentially much faster with large datasets. Currently only X,Y dataseries.
             </summary>
-            <param name="renderableSeries"></param>
+            <param name="series"></param>
             <param name="X"></param>
             <param name="Y"></param>
             <returns></returns>
