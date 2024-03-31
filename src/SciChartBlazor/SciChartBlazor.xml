@@ -1143,6 +1143,26 @@
             The type.
             </value>
         </member>
+        <member name="P:SciChartBlazor.Modifiers.LegendModifier.ShowCheckboxes">
+            <summary>
+            Sets whether the legend has visibility checkboxes in it or not.
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.Modifiers.LegendModifier.ShowSeriesMarkers">
+            <summary>
+            Sets whether Series markers are visible or not.
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.Modifiers.LegendModifier.Orientation">
+            <summary>
+            Sets the initial orientation of the legend.
+            </summary>
+        </member>
+        <member name="P:SciChartBlazor.Modifiers.LegendModifier.PlacementDivId">
+            <summary>
+            The parent div element Id or reference, the Legend will be appended to this element.
+            </summary>
+        </member>
         <member name="T:SciChartBlazor.Modifiers.ModifierBase">
             <summary>
             The base class for Modifiers.
@@ -2585,6 +2605,14 @@
             <summary>
             Dispose the chart.
             </summary>
+        </member>
+        <member name="M:SciChartBlazor.SciChartBuilder.IncludeSeries(System.String,System.String,System.Boolean)">
+            <summary>
+            Mark if the Series should be included or excluded in the legend modifier.
+            </summary>
+            <param name="legendModifierId">Legend modifier id.</param>
+            <param name="seriesId">Series id.</param>
+            <param name="isIncluded">Included in legend.</param>
         </member>
         <member name="T:SciChartBlazor.SciChartElementBase">
             <summary>
