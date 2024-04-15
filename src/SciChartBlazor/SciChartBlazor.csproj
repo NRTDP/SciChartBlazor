@@ -1,6 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFrameworks>net6.0;net8.0</TargetFrameworks>
+		<VersionPrefix>1.5.3.2</VersionPrefix>
+		<!--
+		<VersionSuffix>beta</VersionSuffix>
+		-->
+
 		<Authors>Northwestern University</Authors>
 		<Description>A Blazor wrapper for SciChart JS</Description>
 		<Copyright>Copyright 2020 (c) Northwestern University. All rights reserved.</Copyright>
@@ -14,6 +19,7 @@
 		<DocumentationFile>SciChartBlazor.xml</DocumentationFile>
 		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
 		<TreatSpecificWarningsAsErrors />
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	</PropertyGroup>
 
 	<ItemGroup>

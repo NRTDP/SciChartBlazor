@@ -292,3 +292,4 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 *.diagsession
+/src/SciChartBlazor/SciChartBlazor.xml
