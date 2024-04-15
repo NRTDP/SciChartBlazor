@@ -7,12 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SciChartBlazor", "SciChartB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SciChartBlazor.Demos.Wasm", "SciChartBlazor.Demos.Wasm\SciChartBlazor.Demos.Wasm.csproj", "{2B9AF460-E540-45BF-9029-87E94881B964}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SciChartBlazor.ServerSideDemos", "SciChartBlazor.ServerSideDemos\SciChartBlazor.ServerSideDemos.csproj", "{6EB4BB67-EC9A-4D63-853D-0BEB7200DF8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SciChartBlazor.ServerSideDemos", "SciChartBlazor.ServerSideDemos\SciChartBlazor.ServerSideDemos.csproj", "{6EB4BB67-EC9A-4D63-853D-0BEB7200DF8E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D46D3F8D-D39F-4172-8E22-532D14ED19B3} = {D46D3F8D-D39F-4172-8E22-532D14ED19B3}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SciChartBlazor.Shared", "SciChartBlazor.Shared\SciChartBlazor.Shared.csproj", "{D46D3F8D-D39F-4172-8E22-532D14ED19B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SciChartBlazor.Shared", "SciChartBlazor.Shared\SciChartBlazor.Shared.csproj", "{D46D3F8D-D39F-4172-8E22-532D14ED19B3}"
 	ProjectSection(ProjectDependencies) = postProject
 		{0C354E12-3D1D-4A73-8EA7-339B697A2612} = {0C354E12-3D1D-4A73-8EA7-339B697A2612}
 	EndProjectSection
