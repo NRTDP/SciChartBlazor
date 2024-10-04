@@ -34,9 +34,9 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.1" />
 	</ItemGroup>
 
-	<Target Name="PublishRunWebpack" AfterTargets="Build">
+	<!--<Target Name="PublishRunWebpack" AfterTargets="Build">
 		<Exec WorkingDirectory="wwwroot\SciChart\" Command="npm install" />
 		<Exec WorkingDirectory="wwwroot\SciChart\" Command="npm run build" />
-	</Target>
+	</Target>-->
 
 </Project>
