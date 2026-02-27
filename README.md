@@ -1,3 +1,6 @@
+Scichart have recently announced that they are devloping their own blazor wrapper! Which you can find here: [scichart.blazor.examples](https://github.com/abtsoftware/scichart.blazor.examples)
+
+
 # SciChartBlazor
 A Blazor wrapper for SciChart JS
 
